@@ -1,4 +1,5 @@
 # src/data_models.py
+
 from pydantic import BaseModel, Field
 from typing import Optional
 import datetime
@@ -9,6 +10,5 @@ class Memory(BaseModel):
     content: str
     confidence: float = Field(ge=0.0, le=1.0)
     timestamp: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
-    extracted_from: str # e.g., "conversation_id:turn_3"
-    previous_value: Optional[str] = None # For tracking updates
-    
+    extracted_from: str
+    previous_value: Optional[str] = None
