@@ -1,40 +1,56 @@
-# main.py
+# main.py (Rewritten for the new Agentic System)
 
 import chromadb
+from dotenv import load_dotenv
 from src.agent import Agent
 from src.memory_store import MemoryStore
-from src.tools import write_memory, update_memory, read_memory
 
 def main():
     """
-    Main function to initialize and run the agent demo.
-    It wires together all the components of the system.
+    A simple demo script to initialize and run the intelligent agent.
+    This script simulates a short conversation to demonstrate the agent's
+    ability to extract and update memories using an LLM.
     """
-    print("--- Initializing Memory Bridge System ---")
+    load_dotenv()
+    print("--- Initializing Memory Bridge Demo ---")
 
-    # 1. Initialize the DB Client.
-    # We use the standard in-memory client for simple, clean execution.
-    # This client does not start a background server, so the script will exit properly.
     client = chromadb.Client()
-
-    # 2. Initialize the MemoryStore with the client.
-    # This is the dependency injection that fixes the original TypeError.
     store = MemoryStore(client=client)
+    memory_agent = Agent(store=store)
+    
+    conversation_history = []
+    
+    print("\n--- Starting Demo Conversation ---")
 
-    # 3. Define the list of tools the agent can use.
-    tool_belt = [write_memory, update_memory, read_memory]
+    # --- Turn 1: User introduces two facts ---
+    turn_1_content = "Hi, my name is Alice and I am a project manager at Innovate Inc."
+    conversation_history.append({"role": "user", "content": turn_1_content})
+    memory_agent.process_turn(conversation_history=conversation_history, current_turn_index=0)
 
-    # 4. Initialize the Agent, providing it with the tools and the memory store.
-    memory_agent = Agent(tools=tool_belt, store=store)
+    # --- Turn 2: Assistant's turn (should be ignored by agent) ---
+    turn_2_content = "It's great to meet you, Alice! How can I help you today?"
+    conversation_history.append({"role": "assistant", "content": turn_2_content})
+    memory_agent.process_turn(conversation_history=conversation_history, current_turn_index=1)
 
-    # 5. Run a sample conversation through the agent.
-    print("\n--- Starting Agent Demo Conversation ---")
-    memory_agent.process_turn("User: Hi, my name is Alice.") # This won't trigger the keyword
-    memory_agent.process_turn("User: My name is Alice, and I work at Google.") # This will
-    memory_agent.process_turn("User: Actually, I switched jobs to Anthropic.") # This will trigger update
+    # --- Turn 3: User updates one of the facts ---
+    turn_3_content = "Actually, I was just promoted to Director. My company is still Innovate Inc though."
+    conversation_history.append({"role": "user", "content": turn_3_content})
+    memory_agent.process_turn(conversation_history=conversation_history, current_turn_index=2)
+
+    print("\n--- Demo Conversation Finished ---")
+    
+    print("\n--- Final State of Memory Store ---")
+    final_memories = store.collection.get(include=["metadatas", "documents"])
+    if final_memories['ids']:
+        for i, doc_id in enumerate(final_memories['ids']):
+            print(f"ID: {doc_id}")
+            print(f"  Content: '{final_memories['documents'][i]}'")
+            print(f"  Metadata: {final_memories['metadatas'][i]}")
+    else:
+        print("No memories were stored.")
 
     print("\n--- System Shutdown ---")
 
-
 if __name__ == "__main__":
     main()
+    
