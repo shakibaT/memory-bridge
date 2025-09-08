@@ -2,6 +2,8 @@
 
 # ... (imports and schemas are the same)
 import os
+import json
+import requests
 from pathlib import Path
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
@@ -25,16 +27,41 @@ from src.data_models import Memory
 from src.memory_store import MemoryStore
 
 
+
 def get_embedding(text: str):
-    """Generates an embedding for a given text using the specified model."""
+    """Generates an embedding for a given text using a direct requests call."""
     text = text.replace("\n", " ")
-    # *** THIS IS THE FIX for the BadRequestError ***
-    # We explicitly specify the encoding_format to match what the proxy expects.
-    return client.embeddings.create(
-        input=[text], 
-        model=EMBEDDING_MODEL,
-        encoding_format="float"  # <--- ADD THIS LINE
-    ).data[0].embedding
+    
+    api_key = os.getenv("OPENAI_API_KEY")
+    base_url = os.getenv("OPENAI_API_BASE")
+    
+    if not api_key or not base_url:
+        raise ValueError("OPENAI_API_KEY and OPENAI_API_BASE must be set.")
+        
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json"
+    }
+    
+    data = {
+        "input": text,
+        "model": EMBEDDING_MODEL
+    }
+    
+    response = requests.post(f"{base_url}/embeddings", headers=headers, json=data)
+    
+    if response.status_code != 200:
+        raise Exception(f"Request failed with status {response.status_code}: {response.text}")
+        
+    response_json = response.json()
+    
+    if "data" not in response_json or not response_json["data"]:
+        raise Exception(f"Invalid response from embedding endpoint: {response_json}")
+        
+    # Truncating embedding to 384 dimensions as a workaround for DB dimension mismatch.
+    # WARNING: This may affect retrieval quality.
+    return response_json["data"][0]["embedding"][:384]
+
 
 # ... (rest of the tool functions and definitions are correct and do not need to change)
 def write_memory(store: MemoryStore, args: WriteMemoryArgs, extracted_from: str):
