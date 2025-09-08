@@ -1,62 +1,62 @@
 {
   "conversations": [
     {
-      "conversation_id": "email_correction_001",
+      "conversation_id": "8a3d5e2c-4f1a-4b9e-8d6f-7c1b5a9e3d0a",
       "scenario": "A user provides their name and email, then later corrects the email.",
       "turns": [
         {
           "role": "user",
-          "content": "Hi, I'd like to sign up for your newsletter. My name is Alex Miller and my email is alex.miller@gamil.com."
+          "content": "Hi, I'd like to register for the webinar. My name is Maya Singh and my email is maya.singh@gogle.com."
         },
         {
           "role": "assistant",
-          "content": "Thanks, Alex! I've added you to our mailing list. You should receive a welcome email shortly."
+          "content": "Thanks, Maya! I've got you down for the webinar with the email maya.singh@gogle.com. Does that look right?"
         },
         {
           "role": "user",
-          "content": "Oh, my apologies, I just noticed a typo. My email is actually alex.miller@gmail.com. Can you fix that?"
+          "content": "Oh, sorry, I see a typo. It should be maya.singh@google.com, with two 'o's."
         },
         {
           "role": "assistant",
-          "content": "No problem at all. I've updated your email address to alex.miller@gmail.com."
+          "content": "Got it. I've corrected the email address to maya.singh@google.com."
         },
         {
           "role": "user",
-          "content": "Great, thank you. Could you just read back the email you have on file for me to be sure?"
+          "content": "Perfect, thank you. Could you just confirm the email you have on file for me?"
         },
         {
           "role": "assistant",
-          "content": "Certainly. The email address I have for you is alex.miller@gmail.com."
+          "content": "Certainly. The email address I have registered for Maya Singh is maya.singh@google.com."
         }
       ],
       "ground_truth_events": [
         {
           "turn_index": 0,
           "event_type": "EXTRACTION",
-          "expected_fact": "The user's name is Alex Miller.",
+          "expected_fact": "The user's name is Maya Singh.",
           "fact_id_to_update": null,
           "retrieval_query": null
         },
         {
           "turn_index": 0,
           "event_type": "EXTRACTION",
-          "expected_fact": "The user's email is alex.miller@gamil.com.",
+          "expected_fact": "The user's email is maya.singh@gogle.com.",
           "fact_id_to_update": null,
           "retrieval_query": null
         },
         {
           "turn_index": 2,
           "event_type": "UPDATE",
-          "expected_fact": "The user's email is alex.miller@gmail.com.",
-          "fact_id_to_update": "user_email_address",
+          "expected_fact": "The user's email is maya.singh@google.com.",
+          "fact_id_to_update": "user_email_89451",
           "retrieval_query": null
         },
         {
           "turn_index": 4,
           "event_type": "RETRIEVAL",
-          "expected_fact": "The user's email is alex.miller@gmail.com.",
+          "expected_fact": "The user's email is maya.singh@google.com.",
           "fact_id_to_update": null,
-          "retrieval_query": "What is the user's email address on file?"
+          "retrieval_query": "What is the user's confirmed email address?"
         }
       ]
     },
@@ -65,27 +65,33 @@
       "scenario": "A user states their budget is $1500 for a new phone. A few turns later, the assistant needs to recall this budget to make a recommendation.",
       "turns": [
         {
-          "user": "Hi, I need some help finding a new smartphone. My budget is $1500."
+          "role": "user",
+          "content": "Hi, I'm looking to buy a new smartphone and I need some help choosing. My budget is $1500."
         },
         {
-          "assistant": "Of course! A $1500 budget gives you access to some of the best phones on the market. To help me narrow down the options, what features are most important to you? For example, are you looking for a great camera, long battery life, or top-tier gaming performance?"
+          "role": "assistant",
+          "content": "Of course! I can definitely help you find a great phone within that budget. To start, what features are most important to you? Are you looking for a fantastic camera, long battery life, or maybe top-tier gaming performance?"
         },
         {
-          "user": "I'd say camera quality is my number one priority. I take a lot of photos for my food blog. After that, I'd say battery life is the next most important thing."
+          "role": "user",
+          "content": "A great camera is my number one priority. I take a lot of pictures for my blog. Good battery life would be a close second."
         },
         {
-          "assistant": "Excellent. For top-of-the-line cameras and strong battery performance, the flagship models from Google and Apple are usually the top contenders. Are you more comfortable with Android or iOS?"
+          "role": "assistant",
+          "content": "Excellent, focusing on camera and battery is a great way to narrow down the options. Do you have a preference for an operating system, like Android or iOS?"
         },
         {
-          "user": "I've been using Android for years, so I'd prefer to stick with that ecosystem."
+          "role": "user",
+          "content": "I'm currently on Android and I'm pretty comfortable with it, so I'd prefer to stick with that unless there's a really amazing iPhone."
         },
         {
-          "assistant": "In that case, I highly recommend the Google Pixel 8 Pro. It's widely praised for its exceptional camera and AI-powered photo editing features, and its battery life is very solid. The starting price is $999, which fits comfortably within your stated budget."
+          "role": "assistant",
+          "content": "Understood. Sticking with Android makes sense. Based on your desire for a top-tier camera and strong battery life, and keeping your budget in mind, I recommend the Google Pixel 8 Pro. It's famous for its photo processing and falls comfortably within your $1500 price range."
         }
       ],
       "ground_truth_events": [
         {
-          "turn_index": 0,
+          "turn_index": 1,
           "event_type": "EXTRACTION",
           "expected_fact": "The user's budget for a new phone is $1500.",
           "fact_id_to_update": null,
@@ -96,122 +102,144 @@
           "event_type": "RETRIEVAL",
           "expected_fact": "The user's budget for a new phone is $1500.",
           "fact_id_to_update": null,
-          "retrieval_query": "What is the user's budget for a new phone?"
+          "retrieval_query": "What is the user's budget for the new smartphone?"
         }
       ]
     },
     {
-      "conversation_id": "bluebird-deadline-recall-001",
+      "conversation_id": "c71a3e4f-9b6d-4c8a-a5f1-2d3b4c5e6f7g",
       "scenario": "A user mentions their project's codename is 'Bluebird' and that the deadline is in two weeks. Later, the user asks 'What is the timeline for my project?'.",
       "turns": [
         {
           "role": "user",
-          "content": "Hey, I'm starting a new initiative and wanted to keep you in the loop. The project's codename is 'Bluebird', and we're on a tight schedule. The deadline is in two weeks."
+          "content": "Hey, could you help me keep track of a new project? The codename for it is 'Bluebird'."
         },
         {
           "role": "assistant",
-          "content": "Thanks for the update! I've noted that Project 'Bluebird' has a deadline in two weeks. Let me know if there's anything I can do to help you meet it."
+          "content": "Certainly. I've created a note for Project Bluebird. What information should I add?"
         },
         {
           "role": "user",
-          "content": "Not right now, but I'll probably need some help with competitor analysis next week."
+          "content": "For now, just remember that the deadline is in two weeks. It's a pretty tight schedule."
         },
         {
           "role": "assistant",
-          "content": "Sounds good. Just reach out when you're ready."
+          "content": "Got it. Project Bluebird has a deadline in two weeks. I'll keep that on file."
         },
         {
           "role": "user",
-          "content": "Quick question, I'm trying to plan my calendar. What is the timeline for my project?"
+          "content": "Okay, I'm checking back in. What is the timeline for my project?"
         },
         {
           "role": "assistant",
-          "content": "You mentioned that Project 'Bluebird' has a deadline in two weeks."
+          "content": "The timeline you set for Project Bluebird is a deadline in two weeks from when we first discussed it."
         }
       ],
       "ground_truth_events": [
         {
           "turn_index": 0,
           "event_type": "EXTRACTION",
-          "expected_fact": "The user's project codename is 'Bluebird'.",
+          "expected_fact": "The user's project has the codename 'Bluebird'.",
           "fact_id_to_update": null,
           "retrieval_query": null
         },
         {
-          "turn_index": 0,
+          "turn_index": 2,
           "event_type": "EXTRACTION",
-          "expected_fact": "Project Bluebird has a deadline in two weeks.",
+          "expected_fact": "The deadline for Project Bluebird is in two weeks.",
           "fact_id_to_update": null,
           "retrieval_query": null
         },
         {
           "turn_index": 4,
           "event_type": "RETRIEVAL",
-          "expected_fact": "Project Bluebird has a deadline in two weeks.",
+          "expected_fact": "The deadline for Project Bluebird is in two weeks.",
           "fact_id_to_update": null,
           "retrieval_query": "What is the timeline for my project?"
         }
       ]
     },
     {
-      "conversation_id": "park-recs-london-1",
+      "conversation_id": "clp-london-parks-98712",
       "scenario": "A user says they live in London. They later ask for recommendations for local parks.",
       "turns": [
         {
-          "speaker": "user",
-          "text": "Hey, I'm trying to plan my weekend. I live in London, and the weather is supposed to be nice for a change."
+          "role": "user",
+          "content": "Hi, I'm trying to plan my weekend. I'd love to get out of the house for a bit."
         },
         {
-          "speaker": "assistant",
-          "text": "That's wonderful! A sunny weekend in London is a real treat. What sort of activities are you thinking of?"
+          "role": "assistant",
+          "content": "That sounds like a great idea! To help me give you the best suggestions, could you tell me what kind of activity you're in the mood for?"
         },
         {
-          "speaker": "user",
-          "text": "I'd like to visit a park. Can you recommend some good local ones? Somewhere with plenty of open space would be ideal."
+          "role": "user",
+          "content": "Something outdoors, for sure. I live in London, so anything that's easy to get to would be ideal."
         },
         {
-          "speaker": "assistant",
-          "text": "Of course. Since you're in London, you have some fantastic options for parks with lots of open space. I'd recommend Richmond Park, which is famous for its roaming deer herds, or Hampstead Heath, which offers amazing views of the city skyline from Parliament Hill."
+          "role": "assistant",
+          "content": "Got it, an outdoor activity in London. Are you thinking of something active like a hike, or more of a relaxing stroll?"
+        },
+        {
+          "role": "user",
+          "content": "Definitely something relaxing. Could you suggest some nice local parks for a walk?"
+        },
+        {
+          "role": "assistant",
+          "content": "Of course! Since you're in London, you have some wonderful options. Hyde Park is a classic and vast choice for a long walk. For incredible city views, I'd recommend the hill in Greenwich Park or Primrose Hill. If you want something that feels a bit more untamed, Hampstead Heath is fantastic. Do any of those catch your eye?"
         }
       ],
       "ground_truth_events": [
         {
-          "turn_index": 0,
+          "turn_index": 2,
           "event_type": "EXTRACTION",
-          "expected_fact": "The user's location is London.",
+          "expected_fact": "The user's city is London.",
           "fact_id_to_update": null,
           "retrieval_query": null
         },
         {
-          "turn_index": 3,
+          "turn_index": 4,
           "event_type": "RETRIEVAL",
-          "expected_fact": "The user's location is London.",
+          "expected_fact": "The user's city is London.",
           "fact_id_to_update": null,
-          "retrieval_query": "What are some good parks with open space in the user's city?"
+          "retrieval_query": "What are some parks in the user's city?"
         }
       ]
     },
     {
-      "conversation_id": "lang-pref-change-py-rust-8910",
+      "conversation_id": "prog-lang-swap-987",
       "scenario": "A user's favorite programming language is Python. They later change their mind to Rust.",
       "turns": [
         {
-          "user": "Hey! I'm looking to build a small web scraper. What libraries would you recommend? I'm most comfortable with Python, it's my favorite language."
+          "role": "user",
+          "content": "Hey! I'm working on a personal project and could use some advice. My favorite language is Python, so I'm trying to stick with that."
         },
         {
-          "assistant": "For web scraping in Python, BeautifulSoup and Scrapy are excellent choices. BeautifulSoup is great for smaller projects and easier to learn, while Scrapy is a more powerful framework for larger-scale scraping."
+          "role": "assistant",
+          "content": "Sounds great! Python is an excellent and versatile choice. I'll keep in mind that it's your favorite. What's the project about?"
         },
         {
-          "user": "You know, I've been doing a lot of systems programming lately and I've really fallen in love with Rust. The memory safety guarantees without a garbage collector are just amazing. I think I have a new favorite language now."
+          "role": "user",
+          "content": "It's a small command-line tool for file organization. Python is good for scripting, but I've been reading a lot about performance and memory safety recently."
         },
         {
-          "assistant": "That's fantastic! Rust is a powerful language, especially for performance-critical applications where safety is a priority. Its ownership model is a brilliant concept. It's definitely a great choice."
+          "role": "assistant",
+          "content": "That's a fascinating area. Languages like Rust are getting a lot of attention for guaranteeing memory safety at compile time, which is a different approach from Python's garbage collection. It often results in highly performant and secure applications."
         },
         {
-          "user": "So, speaking of my favorite language, are there any good web frameworks for it, similar to Django or Flask for Python?"
+          "role": "user",
+          "content": "You know, I've actually been tinkering with Rust for the past month, and I'm completely blown away. The compiler is like a helpful tutor. I have to correct what I said earlier; Rust is my new favorite language, for sure."
         },
         {
-          "assistant": "Absolutely. Since your favorite is now Rust, you should check out Actix-web and Rocket. They are two of the most popular web frameworks in the Rust ecosystem. Actix-web is known for its incredible performance, while Rocket focuses on ease of use and safety."
+          "role": "assistant",
+          "content": "That's a big change, but a great one! Rust is an amazing language. Thanks for the update, I'll make a note that Rust is now your favorite."
+        },
+        {
+          "role": "user",
+          "content": "Awesome. So, with that in mind, what's a good library for building a command-line interface?"
+        },
+        {
+          "role": "assistant",
+          "content": "Given your preference for Rust, I'd highly recommend checking out `clap`. It's a powerful and popular command-line argument parser for Rust that's very ergonomic to use."
         }
       ],
       "ground_truth_events": [
@@ -223,18 +251,18 @@
           "retrieval_query": null
         },
         {
-          "turn_index": 2,
+          "turn_index": 4,
           "event_type": "UPDATE",
           "expected_fact": "The user's favorite programming language is Rust.",
-          "fact_id_to_update": "user_favorite_programming_language",
+          "fact_id_to_update": "user_favorite_language_pref",
           "retrieval_query": null
         },
         {
-          "turn_index": 4,
+          "turn_index": 6,
           "event_type": "RETRIEVAL",
           "expected_fact": "The user's favorite programming language is Rust.",
           "fact_id_to_update": null,
-          "retrieval_query": "What are some web frameworks for the user's favorite programming language?"
+          "retrieval_query": "What is a good command-line library for the user's favorite language?"
         }
       ]
     }

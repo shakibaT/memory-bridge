@@ -16,7 +16,7 @@ class MemoryStore:
         try:
             self.collection = self.client.get_collection(name="memories")
             print("INFO: Connected to existing collection 'memories'.")
-        except ValueError:
+        except:
             # Collection doesn't exist, create new one with correct dimensions
             self.collection = self.client.create_collection(
                 name="memories",
