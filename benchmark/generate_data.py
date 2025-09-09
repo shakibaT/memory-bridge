@@ -1,63 +1,99 @@
 # benchmark/generate_data.py
 
-import os
 import json
-from openai import OpenAI
-from benchmark.dataset_schema import Dataset, Conversation
+import os
+import uuid
+from openai import OpenAI # Using OpenAI's library as per the assignment's proxy compatibility
 from dotenv import load_dotenv
 
-def get_generation_prompt(scenario: str) -> str:
-    # Adding RETRIEVAL to the instructions for the LLM
-    return f"""
-    You are a synthetic conversation data generator. Your task is to create a single, high-quality conversation in JSON format that fits the following scenario: '{scenario}'.
+# --- Configuration ---
+# As per the assignment, connect to the provided LiteLLM proxy
+# Ensure you have OPENAI_API_KEY and OPENAI_API_BASE set in your environment
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_API_BASE"))
+MODEL_NAME = "gemini-2.5-pro"
+NUM_CONVERSATIONS = 50 # Increased dataset size to meet requirements
 
-    The JSON output MUST conform to this exact schema:
-    {json.dumps(Conversation.model_json_schema(), indent=2)}
+# --- Prompts for Data Generation ---
+# This prompt asks the LLM to generate not just the conversation,
+# but also the ground truth data we need for evaluation.
+GENERATION_PROMPT_TEMPLATE = """
+You are a data generator for testing an AI memory system. Your task is to create a realistic, multi-turn conversation and the corresponding ground truth data for evaluation.
 
-    RULES:
-    1.  Create a realistic conversation between a "user" and an "assistant".
-    2.  For `EXTRACTION`, `UPDATE`, and `RETRIEVAL` events, the `expected_fact` should be a concise statement.
-    3.  For `UPDATE` events, provide a plausible `fact_id_to_update`. The conversation must show the user correcting previous information.
-    4.  For `RETRIEVAL` events, provide a `retrieval_query` that the assistant would need to answer. The `expected_fact` is the key piece of information that must be retrieved to answer the query correctly.
-    5.  The `turn_index` is zero-based. The JSON output must be a single, complete JSON object.
-    """
+The conversation should include:
+1.  **Simple Fact Storage**: At least 3-4 basic facts about the user (e.g., name, city, hobbies, job).
+2.  **Fact Update/Correction**: The user must correct a piece of information they gave earlier.
+3.  **Multi-hop Reasoning**: Include facts that are related, requiring the system to connect them. For example, "I live in Brooklyn" and later "The summers are great here for biking." A query like "Does the user like biking in Brooklyn?" would require multi-hop reasoning.
 
-def generate_dataset(num_conversations: int = 5):
-    load_dotenv()
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_API_BASE"))
-    model = "gemini-2.5-pro"
-    
-    scenarios = [
-        "A user provides their name and email, then later corrects the email.",
-        "A user states their budget is $1500 for a new phone. A few turns later, the assistant needs to recall this budget to make a recommendation.",
-        "A user mentions their project's codename is 'Bluebird' and that the deadline is in two weeks. Later, the user asks 'What is the timeline for my project?'",
-        "A user says they live in London. They later ask for recommendations for local parks.",
-        "A user's favorite programming language is Python. They later change their mind to Rust."
-    ]
-    
-    all_conversations = []
-    print(f"Generating {num_conversations} conversations...")
-    for i in range(num_conversations):
-        scenario = scenarios[i % len(scenarios)] # Cycle through scenarios
-        print(f"Generating conversation {i+1}/{num_conversations} for scenario: '{scenario}'")
-        prompt = get_generation_prompt(scenario)
-        
+Generate a JSON object with the following structure:
+- `conversation_id`: A unique identifier.
+- `turns`: A list of conversation turns, with `role` ('user' or 'assistant') and `content`.
+- `ground_truth`:
+  - `facts`: A list of all facts that should be extracted. Each fact should have:
+    - `content`: The structured fact (e.g., "User's name is Maya").
+    - `turn_ids`: A list of turn indices (starting from 0) where this fact is mentioned or updated.
+    - `is_update`: A boolean indicating if this is an update to a previous fact.
+    - `previous_value` (optional): The old value if `is_update` is true.
+  - `queries`: A list of questions to test the memory system. Each query should have:
+    - `query`: The question.
+    - `expected_facts`: A list of the exact `content` of the facts needed to answer the query.
+
+Ensure the final output is only the JSON object, without any other text or markdown.
+
+Example Fact Update:
+{"role": "user", "content": "I work at a startup called 'InnovateAI'."}
+...
+{"role": "user", "content": "Actually, I switched jobs. I now work at 'Global Tech'."}
+
+Ground truth for this update:
+{
+  "content": "User works at Global Tech",
+  "turn_ids": [X, Y],
+  "is_update": true,
+  "previous_value": "User works at InnovateAI"
+}
+"""
+
+def generate_synthetic_dataset():
+    """Generates a dataset of conversations with ground truth for evaluation."""
+    print(f"Generating {NUM_CONVERSATIONS} conversations...")
+    dataset = []
+    for i in range(NUM_CONVERSATIONS):
         try:
-            response = client.chat.completions.create(model=model, messages=[{"role": "user", "content": prompt}], temperature=0.8)
-            json_response = response.choices[0].message.content.strip().replace('```json', '').replace('```', '')
-            conversation_data = json.loads(json_response)
-            conversation = Conversation(**conversation_data)
-            all_conversations.append(conversation.model_dump())
-            print(f"-> Successfully generated and validated conversation '{conversation.conversation_id}'.")
-        except Exception as e:
-            print(f"-> ERROR: Failed to generate or parse data for scenario. Error: {e}")
+            print(f"Generating conversation {i+1}/{NUM_CONVERSATIONS}...")
+            completion = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=[{"role": "user", "content": GENERATION_PROMPT_TEMPLATE}],
+                temperature=0.8,
+            )
+            
+            response_text = completion.choices[0].message.content
+            # Clean up potential markdown formatting
+            if response_text.strip().startswith("```json"):
+                response_text = response_text.strip()[7:-3]
+            
+            generated_data = json.loads(response_text)
+            generated_data['conversation_id'] = f"conv_{uuid.uuid4()}"
+            dataset.append(generated_data)
 
-    dataset = Dataset(conversations=all_conversations)
-    output_path = "benchmark/dataset.json"
-    with open(output_path, "w") as f:
-        json.dump(dataset.model_dump(), f, indent=2)
-        
-    print(f"\nDataset generation complete. Saved {len(all_conversations)} conversations to {output_path}")
+        except Exception as e:
+            print(f"Error generating conversation {i+1}: {e}")
+            print("Skipping this one.")
+    
+    return dataset
 
 if __name__ == "__main__":
-    generate_dataset()
+    # Create benchmark directory if it doesn't exist
+    if not os.path.exists("benchmark"):
+        os.makedirs("benchmark")
+        
+    generated_dataset = generate_synthetic_dataset()
+    
+    if generated_dataset:
+        output_path = os.path.join("benchmark", "dataset.json")
+        with open(output_path, "w") as f:
+            json.dump(generated_dataset, f, indent=2)
+        print(f"\nSuccessfully generated {len(generated_dataset)} conversations.")
+        print(f"Dataset saved to {output_path}")
+    else:
+        print("Dataset generation failed.")

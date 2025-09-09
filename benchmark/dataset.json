@@ -1,270 +1,6014 @@
-{
-  "conversations": [
-    {
-      "conversation_id": "8a3d5e2c-4f1a-4b9e-8d6f-7c1b5a9e3d0a",
-      "scenario": "A user provides their name and email, then later corrects the email.",
-      "turns": [
+[
+  {
+    "conversation_id": "conv_89388924-112c-4a9f-b6e5-320c4189b43f",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! How can I assist you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for some project management tools. I'm a graphic designer and need to organize my client work."
+      },
+      {
+        "role": "assistant",
+        "content": "Of course. For graphic designers, tools like Trello, Asana, or Monday.com are quite popular. Do you have any specific requirements?"
+      },
+      {
+        "role": "user",
+        "content": "Something simple and visual. I live in Chicago, and the winters here are brutal, so I tend to take on more indoor projects then. Need to keep them all straight."
+      },
+      {
+        "role": "assistant",
+        "content": "That makes sense. Given your need for simplicity and visual organization, a tool like Trello might be a great starting point. You can create boards for each client or project."
+      },
+      {
+        "role": "user",
+        "content": "Cool, I'll check it out. Hopefully it'll free up some time for my main hobby, which is playing the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "Great! Having a good workflow definitely helps make more time for hobbies. Enjoy your guitar playing."
+      },
+      {
+        "role": "user",
+        "content": "Actually, I misspoke earlier. I haven't really played my guitar in months. I've gotten very into photography lately. That's my main creative outlet now."
+      },
+      {
+        "role": "assistant",
+        "content": "I see, thanks for the correction. Photography is a wonderful hobby! It must be interesting to capture the architecture in your city."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
         {
-          "role": "user",
-          "content": "Hi, I'd like to register for the webinar. My name is Maya Singh and my email is maya.singh@gogle.com."
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
         },
         {
-          "role": "assistant",
-          "content": "Thanks, Maya! I've got you down for the webinar with the email maya.singh@gogle.com. Does that look right?"
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
         },
         {
-          "role": "user",
-          "content": "Oh, sorry, I see a typo. It should be maya.singh@google.com, with two 'o's."
+          "content": "User lives in Chicago",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
         },
         {
-          "role": "assistant",
-          "content": "Got it. I've corrected the email address to maya.singh@google.com."
+          "content": "User takes on more indoor projects during the winter",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
         },
         {
-          "role": "user",
-          "content": "Perfect, thank you. Could you just confirm the email you have on file for me?"
-        },
-        {
-          "role": "assistant",
-          "content": "Certainly. The email address I have registered for Maya Singh is maya.singh@google.com."
+          "content": "User's hobby is photography",
+          "turn_ids": [
+            6,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is playing the guitar"
         }
       ],
-      "ground_truth_events": [
+      "queries": [
         {
-          "turn_index": 0,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The user's name is Maya Singh.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
+          "query": "What is the user's name and profession?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is a graphic designer"
+          ]
         },
         {
-          "turn_index": 0,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The user's email is maya.singh@gogle.com.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
+          "query": "What is Alex's main creative outlet or hobby?",
+          "expected_facts": [
+            "User's hobby is photography"
+          ]
         },
         {
-          "turn_index": 2,
-          "event_type": "UPDATE",
-          "expected_fact": "The user's email is maya.singh@google.com.",
-          "fact_id_to_update": "user_email_89451",
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 4,
-          "event_type": "RETRIEVAL",
-          "expected_fact": "The user's email is maya.singh@google.com.",
-          "fact_id_to_update": null,
-          "retrieval_query": "What is the user's confirmed email address?"
-        }
-      ]
-    },
-    {
-      "conversation_id": "phone-budget-recall-001",
-      "scenario": "A user states their budget is $1500 for a new phone. A few turns later, the assistant needs to recall this budget to make a recommendation.",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Hi, I'm looking to buy a new smartphone and I need some help choosing. My budget is $1500."
-        },
-        {
-          "role": "assistant",
-          "content": "Of course! I can definitely help you find a great phone within that budget. To start, what features are most important to you? Are you looking for a fantastic camera, long battery life, or maybe top-tier gaming performance?"
-        },
-        {
-          "role": "user",
-          "content": "A great camera is my number one priority. I take a lot of pictures for my blog. Good battery life would be a close second."
-        },
-        {
-          "role": "assistant",
-          "content": "Excellent, focusing on camera and battery is a great way to narrow down the options. Do you have a preference for an operating system, like Android or iOS?"
-        },
-        {
-          "role": "user",
-          "content": "I'm currently on Android and I'm pretty comfortable with it, so I'd prefer to stick with that unless there's a really amazing iPhone."
-        },
-        {
-          "role": "assistant",
-          "content": "Understood. Sticking with Android makes sense. Based on your desire for a top-tier camera and strong battery life, and keeping your budget in mind, I recommend the Google Pixel 8 Pro. It's famous for its photo processing and falls comfortably within your $1500 price range."
-        }
-      ],
-      "ground_truth_events": [
-        {
-          "turn_index": 1,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The user's budget for a new phone is $1500.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 5,
-          "event_type": "RETRIEVAL",
-          "expected_fact": "The user's budget for a new phone is $1500.",
-          "fact_id_to_update": null,
-          "retrieval_query": "What is the user's budget for the new smartphone?"
-        }
-      ]
-    },
-    {
-      "conversation_id": "c71a3e4f-9b6d-4c8a-a5f1-2d3b4c5e6f7g",
-      "scenario": "A user mentions their project's codename is 'Bluebird' and that the deadline is in two weeks. Later, the user asks 'What is the timeline for my project?'.",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Hey, could you help me keep track of a new project? The codename for it is 'Bluebird'."
-        },
-        {
-          "role": "assistant",
-          "content": "Certainly. I've created a note for Project Bluebird. What information should I add?"
-        },
-        {
-          "role": "user",
-          "content": "For now, just remember that the deadline is in two weeks. It's a pretty tight schedule."
-        },
-        {
-          "role": "assistant",
-          "content": "Got it. Project Bluebird has a deadline in two weeks. I'll keep that on file."
-        },
-        {
-          "role": "user",
-          "content": "Okay, I'm checking back in. What is the timeline for my project?"
-        },
-        {
-          "role": "assistant",
-          "content": "The timeline you set for Project Bluebird is a deadline in two weeks from when we first discussed it."
-        }
-      ],
-      "ground_truth_events": [
-        {
-          "turn_index": 0,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The user's project has the codename 'Bluebird'.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 2,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The deadline for Project Bluebird is in two weeks.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 4,
-          "event_type": "RETRIEVAL",
-          "expected_fact": "The deadline for Project Bluebird is in two weeks.",
-          "fact_id_to_update": null,
-          "retrieval_query": "What is the timeline for my project?"
-        }
-      ]
-    },
-    {
-      "conversation_id": "clp-london-parks-98712",
-      "scenario": "A user says they live in London. They later ask for recommendations for local parks.",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Hi, I'm trying to plan my weekend. I'd love to get out of the house for a bit."
-        },
-        {
-          "role": "assistant",
-          "content": "That sounds like a great idea! To help me give you the best suggestions, could you tell me what kind of activity you're in the mood for?"
-        },
-        {
-          "role": "user",
-          "content": "Something outdoors, for sure. I live in London, so anything that's easy to get to would be ideal."
-        },
-        {
-          "role": "assistant",
-          "content": "Got it, an outdoor activity in London. Are you thinking of something active like a hike, or more of a relaxing stroll?"
-        },
-        {
-          "role": "user",
-          "content": "Definitely something relaxing. Could you suggest some nice local parks for a walk?"
-        },
-        {
-          "role": "assistant",
-          "content": "Of course! Since you're in London, you have some wonderful options. Hyde Park is a classic and vast choice for a long walk. For incredible city views, I'd recommend the hill in Greenwich Park or Primrose Hill. If you want something that feels a bit more untamed, Hampstead Heath is fantastic. Do any of those catch your eye?"
-        }
-      ],
-      "ground_truth_events": [
-        {
-          "turn_index": 2,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The user's city is London.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 4,
-          "event_type": "RETRIEVAL",
-          "expected_fact": "The user's city is London.",
-          "fact_id_to_update": null,
-          "retrieval_query": "What are some parks in the user's city?"
-        }
-      ]
-    },
-    {
-      "conversation_id": "prog-lang-swap-987",
-      "scenario": "A user's favorite programming language is Python. They later change their mind to Rust.",
-      "turns": [
-        {
-          "role": "user",
-          "content": "Hey! I'm working on a personal project and could use some advice. My favorite language is Python, so I'm trying to stick with that."
-        },
-        {
-          "role": "assistant",
-          "content": "Sounds great! Python is an excellent and versatile choice. I'll keep in mind that it's your favorite. What's the project about?"
-        },
-        {
-          "role": "user",
-          "content": "It's a small command-line tool for file organization. Python is good for scripting, but I've been reading a lot about performance and memory safety recently."
-        },
-        {
-          "role": "assistant",
-          "content": "That's a fascinating area. Languages like Rust are getting a lot of attention for guaranteeing memory safety at compile time, which is a different approach from Python's garbage collection. It often results in highly performant and secure applications."
-        },
-        {
-          "role": "user",
-          "content": "You know, I've actually been tinkering with Rust for the past month, and I'm completely blown away. The compiler is like a helpful tutor. I have to correct what I said earlier; Rust is my new favorite language, for sure."
-        },
-        {
-          "role": "assistant",
-          "content": "That's a big change, but a great one! Rust is an amazing language. Thanks for the update, I'll make a note that Rust is now your favorite."
-        },
-        {
-          "role": "user",
-          "content": "Awesome. So, with that in mind, what's a good library for building a command-line interface?"
-        },
-        {
-          "role": "assistant",
-          "content": "Given your preference for Rust, I'd highly recommend checking out `clap`. It's a powerful and popular command-line argument parser for Rust that's very ergonomic to use."
-        }
-      ],
-      "ground_truth_events": [
-        {
-          "turn_index": 0,
-          "event_type": "EXTRACTION",
-          "expected_fact": "The user's favorite programming language is Python.",
-          "fact_id_to_update": null,
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 4,
-          "event_type": "UPDATE",
-          "expected_fact": "The user's favorite programming language is Rust.",
-          "fact_id_to_update": "user_favorite_language_pref",
-          "retrieval_query": null
-        },
-        {
-          "turn_index": 6,
-          "event_type": "RETRIEVAL",
-          "expected_fact": "The user's favorite programming language is Rust.",
-          "fact_id_to_update": null,
-          "retrieval_query": "What is a good command-line library for the user's favorite language?"
+          "query": "What does the user tend to do in the winter in Chicago?",
+          "expected_facts": [
+            "User lives in Chicago",
+            "User takes on more indoor projects during the winter"
+          ]
         }
       ]
     }
-  ]
-}
+  },
+  {
+    "conversation_id": "conv_3111a526-849b-41fe-869e-905a31106df3",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! Nice to meet you. How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for a new keyboard. I'm a graphic designer, so I need something with good ergonomics."
+      },
+      {
+        "role": "assistant",
+        "content": "Of course. A good ergonomic keyboard is important for a graphic designer. Are there any specific features you're looking for, like mechanical switches or backlighting?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely mechanical switches. I currently live in Austin, and my last keyboard broke because I spilled sweet tea on it."
+      },
+      {
+        "role": "assistant",
+        "content": "Oh no! That's a classic Austin problem. I'll look for mechanical keyboards with some level of spill resistance. I've noted that you live in Austin."
+      },
+      {
+        "role": "user",
+        "content": "Thanks. My main hobby is photography, especially landscape photos."
+      },
+      {
+        "role": "assistant",
+        "content": "Photography is a wonderful hobby! I'm sure there are some great landscapes to capture around your area."
+      },
+      {
+        "role": "user",
+        "content": "For sure. The hills here are beautiful in the spring. Oh, and I made a mistake earlier. I'm not a graphic designer anymore, I switched to being a UX designer about six months ago."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the clarification, Alex. I've updated your profession to UX designer. That's a fascinating field! Does this change what you're looking for in a keyboard?"
+      },
+      {
+        "role": "user",
+        "content": "Not really, ergonomics are still key. The long hours are the same!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is UX designer",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User's job is graphic designer"
+        },
+        {
+          "content": "User lives in Austin",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is photography",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is interested in landscape photography",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys the hills near their location for photography",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is looking for a mechanical keyboard with ergonomic features",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What is Alex's profession?",
+          "expected_facts": [
+            "User's job is UX designer"
+          ]
+        },
+        {
+          "query": "What was the user's previous job?",
+          "expected_facts": [
+            "User's job is UX designer"
+          ]
+        },
+        {
+          "query": "Does the user enjoy taking photos of the hills in Austin?",
+          "expected_facts": [
+            "User lives in Austin",
+            "User enjoys the hills near their location for photography",
+            "User's hobby is photography"
+          ]
+        },
+        {
+          "query": "What kind of keyboard is the UX designer from Austin looking for?",
+          "expected_facts": [
+            "User's job is UX designer",
+            "User lives in Austin",
+            "User is looking for a mechanical keyboard with ergonomic features"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_8a8f34fd-fac6-4432-bc9a-1224cf882855",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! Nice to meet you. How can I assist you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for some project ideas. I'm a software developer, and in my free time, I really enjoy woodworking."
+      },
+      {
+        "role": "assistant",
+        "content": "That's a great combination of skills! A software developer who enjoys woodworking. Are you thinking of a project that combines both?"
+      },
+      {
+        "role": "user",
+        "content": "Maybe! I'm open to anything. I'm based in Seattle, so I was thinking maybe something related to the local scene."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle is a vibrant city! Perhaps a project related to the coffee culture or the tech industry there. Do you have any other hobbies?"
+      },
+      {
+        "role": "user",
+        "content": "Oh, you know what, I misspoke earlier. I used to do woodworking, but I recently moved and sold my tools. I actually got into 3D printing. And yes, I'm also an avid cyclist. The bike trails are amazing here."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, so you're a software developer in Seattle who's into 3D printing and cycling. Thanks for the correction! Combining 3D printing with your cycling hobby could be interesting. For example, you could design and print custom bike accessories."
+      },
+      {
+        "role": "user",
+        "content": "That's a fantastic idea! Can you help me brainstorm some custom accessories I could design for my bike?"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software developer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is an avid cyclist",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is 3D printing",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is woodworking"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's job?",
+          "expected_facts": [
+            "User is a software developer"
+          ]
+        },
+        {
+          "query": "Did the user say they enjoy woodworking?",
+          "expected_facts": [
+            "User's hobby is 3D printing"
+          ]
+        },
+        {
+          "query": "What are Alex's current hobbies?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is an avid cyclist",
+            "User's hobby is 3D printing"
+          ]
+        },
+        {
+          "query": "Does the user enjoy cycling in Seattle?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User is an avid cyclist"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_710bc4ac-e6d9-4ba0-b88b-0b22754bea3b",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, I'm Alex. I live in Denver and I'm really into hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! Denver has some amazing hiking trails. I bet you get to see some great views."
+      },
+      {
+        "role": "user",
+        "content": "It does! I'm a software developer, so I spend a lot of time indoors. Getting out to the mountains is my escape."
+      },
+      {
+        "role": "assistant",
+        "content": "That makes sense. Balancing screen time with nature is a great way to live. What kind of software do you develop?"
+      },
+      {
+        "role": "user",
+        "content": "I work on cloud infrastructure. And speaking of the outdoors, the snow here is perfect for snowboarding in the winter."
+      },
+      {
+        "role": "assistant",
+        "content": "Ah, a year-round outdoor enthusiast! Snowboarding in Denver must be incredible."
+      },
+      {
+        "role": "user",
+        "content": "Totally. Oh, and by the way, I made a mistake earlier. I'm actually a *senior* software developer now. It was a recent promotion."
+      },
+      {
+        "role": "assistant",
+        "content": "Congratulations on the promotion, Alex! I've updated my notes. A senior software developer, got it."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is snowboarding",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is Senior Software Developer",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's job is Software Developer"
+        },
+        {
+          "content": "User works on cloud infrastructure",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name and where do I live?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Denver"
+          ]
+        },
+        {
+          "query": "What is my current job title?",
+          "expected_facts": [
+            "User's job is Senior Software Developer"
+          ]
+        },
+        {
+          "query": "Do I like to snowboard in Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is snowboarding"
+          ]
+        },
+        {
+          "query": "What are my hobbies?",
+          "expected_facts": [
+            "User's hobby is hiking",
+            "User's hobby is snowboarding"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_ae5c9de7-63bd-4e59-9a96-95e54c7fdd17",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "Just chatting. I'm a graphic designer and in my free time, I love to go hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking is a great hobby! Any favorite spots?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely. There are some amazing trails near me. I live in Denver, Colorado."
+      },
+      {
+        "role": "assistant",
+        "content": "Denver is beautiful! The mountain views must be incredible for your hikes."
+      },
+      {
+        "role": "user",
+        "content": "They are! Oh, and speaking of my work, I should clarify. I used to be a graphic designer, but I recently got promoted to Art Director."
+      },
+      {
+        "role": "assistant",
+        "content": "Congratulations on the promotion to Art Director, Alex!"
+      },
+      {
+        "role": "user",
+        "content": "Thanks! It's been busy, but I still make time for it. The weather here is perfect for getting out on the trails."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great to hear. It's important to maintain a good work-life balance."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver, Colorado",
+          "turn_ids": [
+            4,
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is Art Director",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's job was graphic designer"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What is my current job title?",
+          "expected_facts": [
+            "User's job is Art Director"
+          ]
+        },
+        {
+          "query": "What was my job before I got promoted?",
+          "expected_facts": [
+            "User's job is Art Director"
+          ]
+        },
+        {
+          "query": "Do I enjoy hiking where I live?",
+          "expected_facts": [
+            "User's hobby is hiking",
+            "User lives in Denver, Colorado"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_77a1dedc-6146-4460-af6f-c51e65d6bb9f",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, my name is Alex and I live in Seattle."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! I've heard Seattle is a great city."
+      },
+      {
+        "role": "user",
+        "content": "It is! I'm a software developer. For fun, I mostly go hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds like a great combination. Any favorite trails in the area?"
+      },
+      {
+        "role": "user",
+        "content": "Oh yeah, the trails on Mount Rainier are the best. The scenery here is just breathtaking during the summer."
+      },
+      {
+        "role": "assistant",
+        "content": "I can imagine! Mount Rainier is iconic. Anything else you're into?"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, I've recently started learning to play the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "That's awesome! A classic instrument."
+      },
+      {
+        "role": "user",
+        "content": "It's challenging but fun. Oh, and a quick correction about my job - I was just promoted, so I'm a Senior Software Engineer now, not just a developer."
+      },
+      {
+        "role": "assistant",
+        "content": "Wow, congratulations on the promotion to Senior Software Engineer, Alex! That's a huge achievement."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite hiking trails are on Mount Rainier",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys the scenery on Mount Rainier during the summer",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is learning to play the guitar",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is Senior Software Engineer",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User's job is Software Developer"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and where do they live?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Seattle"
+          ]
+        },
+        {
+          "query": "What is Alex's current job title?",
+          "expected_facts": [
+            "User's job is Senior Software Engineer"
+          ]
+        },
+        {
+          "query": "Does the user like to hike near Seattle in the summer?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's hobby is hiking",
+            "User's favorite hiking trails are on Mount Rainier",
+            "User enjoys the scenery on Mount Rainier during the summer"
+          ]
+        },
+        {
+          "query": "What new skill is Alex learning?",
+          "expected_facts": [
+            "User is learning to play the guitar"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_b2fa13ff-fe5a-4906-8e30-1d877119cfe3",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there! I'm setting up a new profile. My name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! It's great to meet you. What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer and I live in Denver. I'm looking for some local meetups."
+      },
+      {
+        "role": "assistant",
+        "content": "Great! Denver has a vibrant design community. I can look for some graphic design meetups for you. Do you have any hobbies I should know about? Sometimes there are social events that combine interests."
+      },
+      {
+        "role": "user",
+        "content": "Oh, good point. I love hiking. My favorite trail is probably Bear Peak."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking is a fantastic hobby, especially in a place like Denver! I'll see if there are any 'Designers Who Hike' groups. Anything else?"
+      },
+      {
+        "role": "user",
+        "content": "Actually, I was thinking about it, and my all-time favorite is probably the Sky Pond trail in Rocky Mountain National Park. Bear Peak is a close second though."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, Sky Pond is your favorite. That's a beautiful hike! I've updated your preferences."
+      },
+      {
+        "role": "user",
+        "content": "Thanks. The mountain views are just incredible here, it's the main reason I moved."
+      },
+      {
+        "role": "assistant",
+        "content": "I agree, the scenery is breathtaking. I've found a couple of potential meetups. One is a general 'Denver Creatives' monthly social, and another is a 'Code & Canvas' event next week. Are you interested in details for either?"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite hiking trail is Sky Pond",
+          "turn_ids": [
+            4,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's favorite hiking trail is Bear Peak"
+        },
+        {
+          "content": "User likes the mountain views in Denver",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's job?",
+          "expected_facts": [
+            "User is a graphic designer"
+          ]
+        },
+        {
+          "query": "What is Alex's favorite hiking trail?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's favorite hiking trail is Sky Pond"
+          ]
+        },
+        {
+          "query": "Is Bear Peak the user's favorite trail?",
+          "expected_facts": [
+            "User's favorite hiking trail is Sky Pond"
+          ]
+        },
+        {
+          "query": "Why does Alex like living in Denver?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Denver",
+            "User likes the mountain views in Denver"
+          ]
+        },
+        {
+          "query": "Does the user enjoy outdoor activities near his home?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is hiking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_83c728ec-58f9-42e2-8d1e-784cda6b7f6e",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there! I'm setting up a new profile. My name is Alex, I live in Denver, and I enjoy hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Great to meet you, Alex! I've noted that you live in Denver and enjoy hiking. What else should I know about you?"
+      },
+      {
+        "role": "user",
+        "content": "I work as a software engineer."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, a software engineer. Thanks for sharing."
+      },
+      {
+        "role": "user",
+        "content": "You know, I need to correct something. I said I enjoy hiking, which I used to, but lately I'm really into mountain biking instead."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update! I've corrected your hobby to mountain biking."
+      },
+      {
+        "role": "user",
+        "content": "Awesome. The trails around here are perfect for it, especially in the fall."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds lovely! I can see why you'd enjoy mountain biking there."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software engineer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys mountain biking",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User enjoys hiking"
+        },
+        {
+          "content": "The trails near Denver are good for mountain biking",
+          "turn_ids": [
+            0,
+            4,
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What is Alex's hobby?",
+          "expected_facts": [
+            "User enjoys mountain biking"
+          ]
+        },
+        {
+          "query": "Where does the user live?",
+          "expected_facts": [
+            "User lives in Denver"
+          ]
+        },
+        {
+          "query": "Does the user think the mountain biking is good in Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User enjoys mountain biking",
+            "The trails near Denver are good for mountain biking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_0d13ca1b-a78b-4616-b75b-5a664324be15",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there. I'm Alex, and I live in Seattle. I work as a software engineer."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! I've heard Seattle is a great city for tech professionals. What do you enjoy doing in your free time?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a big fan of board games. My favorite one right now is called 'Wingspan'."
+      },
+      {
+        "role": "assistant",
+        "content": "Wingspan is a fantastic game! So, you're a software engineer in Seattle who loves board games."
+      },
+      {
+        "role": "user",
+        "content": "That's me. The coffee culture here is also a huge plus for my late-night coding sessions."
+      },
+      {
+        "role": "assistant",
+        "content": "That makes sense. Good coffee is essential! Is there a particular coffee shop you prefer?"
+      },
+      {
+        "role": "user",
+        "content": "I usually go to 'The Daily Grind'. Actually, wait, that was my old favorite. I've been going to 'Artisan's Brew' exclusively for the past few months. It's much better."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, I'll update my notes. Artisan's Brew is your current favorite coffee shop. Thanks for the correction!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software engineer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is playing board games",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite board game is Wingspan",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite coffee shop is Artisan's Brew",
+          "turn_ids": [
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's favorite coffee shop is The Daily Grind"
+        },
+        {
+          "content": "User enjoys the coffee culture in their city",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and job?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is a software engineer"
+          ]
+        },
+        {
+          "query": "What is Alex's current favorite coffee shop?",
+          "expected_facts": [
+            "User's favorite coffee shop is Artisan's Brew"
+          ]
+        },
+        {
+          "query": "Does the user like the coffee in Seattle?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User enjoys the coffee culture in their city"
+          ]
+        },
+        {
+          "query": "What did the user used to say their favorite coffee shop was?",
+          "expected_facts": [
+            "User's favorite coffee shop is Artisan's Brew"
+          ]
+        },
+        {
+          "query": "What are the user's hobbies?",
+          "expected_facts": [
+            "User's hobby is playing board games",
+            "User's favorite board game is Wingspan"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_e812c842-5b14-40ef-8661-943352d8a085",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, I'm Alex. I'm a graphic designer living in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What kind of graphic design do you focus on?"
+      },
+      {
+        "role": "user",
+        "content": "Mostly branding and web design. In my free time, I love hiking in the mountains around here."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking in the mountains near Denver must be beautiful. Do you have any favorite trails?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely! I also have a golden retriever named Leo who comes with me."
+      },
+      {
+        "role": "assistant",
+        "content": "A hiking buddy! That sounds great."
+      },
+      {
+        "role": "user",
+        "content": "Actually, I need to correct something. I just moved last month. I'm in Boulder now, not Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex! Welcome to Boulder. How are you liking it compared to Denver?"
+      },
+      {
+        "role": "user",
+        "content": "It's great! The trails are even better for hiking with Leo here."
+      },
+      {
+        "role": "assistant",
+        "content": "I'm glad to hear you and Leo are enjoying the new trails in Boulder!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a golden retriever named Leo",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Boulder",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Denver"
+        },
+        {
+          "content": "User hikes with their dog Leo",
+          "turn_ids": [
+            4,
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys the hiking trails in Boulder",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "Where does the user live now?",
+          "expected_facts": [
+            "User lives in Boulder"
+          ]
+        },
+        {
+          "query": "What is the user's job?",
+          "expected_facts": [
+            "User is a graphic designer"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy hiking with his dog in Boulder?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Boulder",
+            "User hikes with their dog Leo",
+            "User enjoys the hiking trails in Boulder"
+          ]
+        },
+        {
+          "query": "What is the name of the user's pet?",
+          "expected_facts": [
+            "User has a golden retriever named Leo"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_6c8f8d80-e9cd-4724-9b5b-df340d21a80f",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there, I'm Alex. I'm a software engineer."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What kind of software do you work on?"
+      },
+      {
+        "role": "user",
+        "content": "I work on mobile apps. I live in Seattle, which has a great tech scene."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle is a beautiful city! I hear the coffee is amazing. Are you a coffee drinker?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely! I love exploring new cafes. It's one of my favorite things to do on the weekends here."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds like a fun weekend activity. So, Alex, a software engineer in Seattle who loves exploring cafes. Got it. How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for a new laptop. Actually, a quick correction - I just moved. I'm now in Portland. The move was for my job."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood, I've updated your location to Portland. The tech scene is growing there too! Are you still looking for cafe recommendations, or should we focus on laptops in Portland?"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software engineer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works on mobile apps",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is exploring new cafes",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Seattle"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "Where do I live now?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "Do I still live in Seattle?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "What do I enjoy doing on the weekends in Portland?",
+          "expected_facts": [
+            "User's hobby is exploring new cafes",
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "What do I do for work?",
+          "expected_facts": [
+            "User is a software engineer"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_1f835029-4865-4783-9dd6-5f39304a9a48",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name's Maya."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Maya! Nice to meet you. What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "Just getting set up. I'm a software engineer based in Austin, Texas. My main hobby is landscape photography."
+      },
+      {
+        "role": "assistant",
+        "content": "Austin is a great city! Landscape photography must be a wonderful hobby there with the Hill Country nearby."
+      },
+      {
+        "role": "user",
+        "content": "It is! The light here is amazing, especially in the spring. It's perfect for capturing the bluebonnets."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds beautiful. Do you have a favorite spot?"
+      },
+      {
+        "role": "user",
+        "content": "Oh, actually, I made a mistake earlier. I'm not a software engineer anymore. I switched to being a data scientist about six months ago."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Maya! Data science is a fascinating field. I've corrected that information."
+      },
+      {
+        "role": "user",
+        "content": "No problem. And to answer your question, my favorite place to shoot is probably Enchanted Rock."
+      },
+      {
+        "role": "assistant",
+        "content": "Enchanted Rock is a classic choice for photographers. I'm sure you get some incredible shots there."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a data scientist",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a software engineer"
+        },
+        {
+          "content": "User lives in Austin, Texas",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is landscape photography",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite photography spot is Enchanted Rock",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Maya"
+          ]
+        },
+        {
+          "query": "What is Maya's current job?",
+          "expected_facts": [
+            "User's name is Maya",
+            "User is a data scientist"
+          ]
+        },
+        {
+          "query": "What was the user's previous job?",
+          "expected_facts": [
+            "User is a data scientist"
+          ]
+        },
+        {
+          "query": "Does the user enjoy landscape photography in Austin?",
+          "expected_facts": [
+            "User lives in Austin, Texas",
+            "User's hobby is landscape photography"
+          ]
+        },
+        {
+          "query": "Where does Maya like to take photos near her home city?",
+          "expected_facts": [
+            "User's name is Maya",
+            "User lives in Austin, Texas",
+            "User's hobby is landscape photography",
+            "User's favorite photography spot is Enchanted Rock"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_dad5c908-ba42-4c21-87ac-de799137bc07",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, my name is Alex and I live in Seattle. I work as a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! It's nice to meet you. A graphic designer in Seattle, that sounds creative."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! In my free time, I'm really into hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle is a great place for hiking with all the nearby mountains!"
+      },
+      {
+        "role": "user",
+        "content": "Oh, I should correct myself about where I live. I just moved last month. I actually live in Portland now."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for the update! So you're in Portland. How are you liking it?"
+      },
+      {
+        "role": "user",
+        "content": "It's great. The trails around here are amazing for it, especially in Forest Park."
+      },
+      {
+        "role": "assistant",
+        "content": "That's wonderful to hear. Forest Park is a gem."
+      },
+      {
+        "role": "user",
+        "content": "By the way, I got a new job too. I'm now a UI/UX designer at a company called 'Pixel Perfect'."
+      },
+      {
+        "role": "assistant",
+        "content": "Congratulations on the new role as a UI/UX designer at Pixel Perfect! That's a big and exciting change."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Seattle"
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a UI/UX designer at Pixel Perfect",
+          "turn_ids": [
+            0,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User works as a graphic designer"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "Where does Alex live now?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "What was the user's previous job?",
+          "expected_facts": [
+            "User works as a UI/UX designer at Pixel Perfect"
+          ]
+        },
+        {
+          "query": "Does the user enjoy hiking near his home in Portland?",
+          "expected_facts": [
+            "User's hobby is hiking",
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "What is Alex's current job title and company?",
+          "expected_facts": [
+            "User works as a UI/UX designer at Pixel Perfect",
+            "User's name is Alex"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_6a9f973c-ecfa-4d75-8cda-b36042ea16d6",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there! My name is Alex, and I live in Denver. My main hobby is hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "It's great to meet you, Alex! Denver is a fantastic place for hiking. I'll remember that."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! For work, I'm a data analyst."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, a data analyst. That's a fascinating field."
+      },
+      {
+        "role": "user",
+        "content": "Yeah, it's pretty cool. And the trails around here are just amazing for my hobby, especially in the summer."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds wonderful. Enjoying the local trails for hiking must be a great way to unwind."
+      },
+      {
+        "role": "user",
+        "content": "Oh, one correction about my job. I actually just moved into a new role. I'm a product manager now, not a data analyst."
+      },
+      {
+        "role": "assistant",
+        "content": "Thank you for the update, Alex. Congratulations on the new role as a product manager! I've updated your information."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! On a different note, I also have a golden retriever named Leo."
+      },
+      {
+        "role": "assistant",
+        "content": "A golden retriever named Leo, how lovely! I'll remember that too."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a product manager",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a data analyst"
+        },
+        {
+          "content": "User has a golden retriever named Leo",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys hiking in Denver",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What's my name and what kind of dog do I have?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User has a golden retriever named Leo"
+          ]
+        },
+        {
+          "query": "What is my current job?",
+          "expected_facts": [
+            "User is a product manager"
+          ]
+        },
+        {
+          "query": "Do I like to go hiking in Denver during the summer?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is hiking",
+            "User enjoys hiking in Denver"
+          ]
+        },
+        {
+          "query": "What was my previous job before I became a product manager?",
+          "expected_facts": [
+            "User is a product manager"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_7065a0a4-ec14-44f2-b129-2bb634fc6657",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name is Alex and I live in Seattle."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! It's great to meet you. What's Seattle like?"
+      },
+      {
+        "role": "user",
+        "content": "It's nice, lots of green. My main hobby is hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds wonderful. Any favorite trails?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely. The trails around here are amazing, especially at Mount Rainier. I go whenever I can."
+      },
+      {
+        "role": "assistant",
+        "content": "Mount Rainier is beautiful. I can see why you'd enjoy hiking there."
+      },
+      {
+        "role": "user",
+        "content": "Yeah. It's a good way to de-stress from my job. I'm a software developer at a small company called 'CodeCrafters'."
+      },
+      {
+        "role": "assistant",
+        "content": "A software developer at CodeCrafters, got it. What kind of software do you build?"
+      },
+      {
+        "role": "user",
+        "content": "We build project management tools. Oh, and a quick correction, I actually just moved. I'm in Portland now, not Seattle. The drive to Rainier is a bit longer, but still worth it."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex! I've noted that you're in Portland now. Glad to hear you can still make it out to your favorite hiking spots."
+      },
+      {
+        "role": "user",
+        "content": "For sure. My golden retriever, Buddy, loves the Portland parks too."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys hiking at Mount Rainier",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software developer",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works at CodeCrafters",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            0,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Seattle"
+        },
+        {
+          "content": "User has a dog",
+          "turn_ids": [
+            10
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog is a golden retriever",
+          "turn_ids": [
+            10
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog is named Buddy",
+          "turn_ids": [
+            10
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and primary hobby?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's hobby is hiking"
+          ]
+        },
+        {
+          "query": "Where does the user currently live?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "Does Alex still enjoy hiking at Mount Rainier from his new city?",
+          "expected_facts": [
+            "User lives in Portland",
+            "User enjoys hiking at Mount Rainier"
+          ]
+        },
+        {
+          "query": "What is the user's job and where do they work?",
+          "expected_facts": [
+            "User is a software developer",
+            "User works at CodeCrafters"
+          ]
+        },
+        {
+          "query": "Tell me about the user's pet.",
+          "expected_facts": [
+            "User has a dog",
+            "User's dog is a golden retriever",
+            "User's dog is named Buddy"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_b99b3e93-9e78-4b21-83fa-aeb64536417a",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, I'm setting up this new system. My name is Alex and I'm a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! It's great to meet you. As a graphic designer, you must have a keen eye for detail."
+      },
+      {
+        "role": "user",
+        "content": "I try! I live in Portland, and my main hobby is rock climbing."
+      },
+      {
+        "role": "assistant",
+        "content": "Portland is a fantastic city for outdoor activities like rock climbing. Is there anything I can help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "Not really, just testing. Oh, a correction: I'm not a graphic designer anymore. I made a career switch last year. I'm a UX researcher now."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex. I've noted that you are now a UX researcher. That's a fascinating field!"
+      },
+      {
+        "role": "user",
+        "content": "It is! It's very different from my old job. The coffee here really helps me get through the complex research work."
+      },
+      {
+        "role": "assistant",
+        "content": "I've heard the coffee in Portland is exceptional! It's good you have something to power your research."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is UX researcher",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's job is graphic designer"
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is rock climbing",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User drinks coffee",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What is Alex's current profession?",
+          "expected_facts": [
+            "User's job is UX researcher"
+          ]
+        },
+        {
+          "query": "What was the user's previous job?",
+          "expected_facts": [
+            "User's job is UX researcher"
+          ]
+        },
+        {
+          "query": "What hobby does the user enjoy in Portland?",
+          "expected_facts": [
+            "User lives in Portland",
+            "User's hobby is rock climbing"
+          ]
+        },
+        {
+          "query": "What does Alex drink to help with his research work in his city?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's job is UX researcher",
+            "User lives in Portland",
+            "User drinks coffee"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_2acb6264-2152-4859-9532-6edab23cbf24",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi! My name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm just exploring. I live in Seattle, and my main hobby is playing the guitar. I also have a cat named Leo."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle is a beautiful city! It's great you have a creative hobby like playing the guitar. And hello to Leo! Is there anything specific you'd like to talk about?"
+      },
+      {
+        "role": "user",
+        "content": "Actually, I should correct something. I sold my guitar a few months ago. My main hobby now is hiking. The trails around the city are incredible."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex. Hiking is a fantastic way to enjoy the nature around Seattle. What kind of trails do you prefer?"
+      },
+      {
+        "role": "user",
+        "content": "I like challenging mountain trails the most."
+      },
+      {
+        "role": "assistant",
+        "content": "Mountain trails can be very rewarding. I can find some popular ones near you if you'd like."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a cat named Leo",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's main hobby is hiking",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's main hobby is playing the guitar"
+        },
+        {
+          "content": "User hikes on trails around their city",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User prefers challenging mountain trails for hiking",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and where do they live?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Seattle"
+          ]
+        },
+        {
+          "query": "What is Alex's main hobby?",
+          "expected_facts": [
+            "User's main hobby is hiking"
+          ]
+        },
+        {
+          "query": "Does Alex still play the guitar?",
+          "expected_facts": [
+            "User's main hobby is hiking"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy hiking in Seattle?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's main hobby is hiking",
+            "User hikes on trails around their city"
+          ]
+        },
+        {
+          "query": "What kind of hiking trails does Alex like near his home?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User hikes on trails around their city",
+            "User prefers challenging mountain trails for hiking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_ba2a35c8-c62e-4873-b91d-f6891e5197cc",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey! My name is Alex. I'm trying to see how well you can remember things."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! It's a pleasure to meet you. I'll do my best. What would you like to tell me?"
+      },
+      {
+        "role": "user",
+        "content": "Well, for starters, I'm a graphic designer and I live in Portland. I also have a dog, a golden retriever named Buddy."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it. A graphic designer in Portland with a golden retriever named Buddy. That sounds like a nice life! Do you have any hobbies?"
+      },
+      {
+        "role": "user",
+        "content": "I do! I love tinkering with electronics. And on weekends, I really enjoy hiking. The trails around here are amazing for it."
+      },
+      {
+        "role": "assistant",
+        "content": "Tinkering with electronics and hiking sound like great ways to spend your time. The Pacific Northwest is beautiful for hiking. Is there anything else you'd like me to remember?"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, one correction. I said I'm a graphic designer, but actually, I'm a product designer now. I made the switch a few months ago."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex. I've noted that you are now a product designer. Is there anything else?"
+      },
+      {
+        "role": "user",
+        "content": "Nope, that's all for now. Let's see what you've got."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a product designer",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a dog named Buddy",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog Buddy is a golden retriever",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is tinkering with electronics",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's dog's name?",
+          "expected_facts": [
+            "User has a dog named Buddy"
+          ]
+        },
+        {
+          "query": "What is Alex's current profession?",
+          "expected_facts": [
+            "User is a product designer"
+          ]
+        },
+        {
+          "query": "What outdoor activity does Alex enjoy doing in Portland?",
+          "expected_facts": [
+            "User lives in Portland",
+            "User's hobby is hiking"
+          ]
+        },
+        {
+          "query": "What are Alex's hobbies?",
+          "expected_facts": [
+            "User's hobby is tinkering with electronics",
+            "User's hobby is hiking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_815f7e7f-8052-4d03-9ad8-4d4272707f00",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, I'm trying to plan a weekend trip. My name is Alex, by the way."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! Happy to help. What kind of trip are you thinking of?"
+      },
+      {
+        "role": "user",
+        "content": "Something outdoorsy. I'm a graphic designer and I've been stuck behind a screen all week. I live in Denver, so maybe something nearby."
+      },
+      {
+        "role": "assistant",
+        "content": "Denver is a great base for outdoor activities! How about exploring Rocky Mountain National Park? It's a classic for a reason."
+      },
+      {
+        "role": "user",
+        "content": "Good idea! I'm really into hiking, and I've heard the trails in the mountains near here are incredible."
+      },
+      {
+        "role": "assistant",
+        "content": "They certainly are! For a weekend trip, the Bear Lake Trailhead offers several options of varying difficulty. Would you like me to look up some specific trails?"
+      },
+      {
+        "role": "user",
+        "content": "That would be great. Oh, and one small correction, I mentioned I'm a graphic designer, but I actually made a career change recently. I'm now a project manager."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for the update Alex. So you're a project manager in Denver who loves hiking. Let me find some trails that would be perfect for a weekend escape..."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a project manager",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "The user believes the mountain trails near their home (Denver) are incredible for hiking",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What is my current job?",
+          "expected_facts": [
+            "User is a project manager"
+          ]
+        },
+        {
+          "query": "Didn't I say I was a graphic designer before?",
+          "expected_facts": [
+            "User is a project manager"
+          ]
+        },
+        {
+          "query": "Does the user like to go hiking in the mountains near Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is hiking",
+            "The user believes the mountain trails near their home (Denver) are incredible for hiking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_bd757bab-b6c7-44a4-b7d4-44513af67a45",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name is Alex and I live in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! I've heard Denver is beautiful. What do you do for a living?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a software engineer. For fun, I love hiking in the mountains nearby."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds amazing. The mountains near Denver must offer some great trails."
+      },
+      {
+        "role": "user",
+        "content": "They do! I usually take my dog, a golden retriever named Buddy, with me on the trails. He loves it."
+      },
+      {
+        "role": "assistant",
+        "content": "A golden retriever named Buddy sounds like the perfect hiking companion!"
+      },
+      {
+        "role": "user",
+        "content": "Oh, I just realized I misspoke earlier. I said I'm a software engineer, but that was my old role. I actually just switched to being a Product Manager last month."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, I'll remember that. Congratulations on the new role as a Product Manager! How are you finding the change?"
+      },
+      {
+        "role": "user",
+        "content": "It's a great change. The new office is much closer to my place, which means I have more time in the evenings to spend with Buddy."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys hiking in the mountains near their city",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a dog named Buddy",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog is a Golden Retriever",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User takes their dog, Buddy, hiking",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is Product Manager",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's job is Software Engineer"
+        },
+        {
+          "content": "User's new job gives them more time to spend with their dog, Buddy",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and where do they live?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Denver"
+          ]
+        },
+        {
+          "query": "What is the user's current occupation?",
+          "expected_facts": [
+            "User's job is Product Manager"
+          ]
+        },
+        {
+          "query": "Does the user go hiking in Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is hiking",
+            "User enjoys hiking in the mountains near their city"
+          ]
+        },
+        {
+          "query": "Tell me about the user's pet.",
+          "expected_facts": [
+            "User has a dog named Buddy",
+            "User's dog is a Golden Retriever"
+          ]
+        },
+        {
+          "query": "How has the user's recent job change affected their dog?",
+          "expected_facts": [
+            "User's job is Product Manager",
+            "User has a dog named Buddy",
+            "User's new job gives them more time to spend with their dog, Buddy"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_cfd8161d-19d7-42da-854b-f71fb3fdc518",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there! My name is Maya. I live in San Francisco."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Maya! It's nice to meet you. I've heard San Francisco is a vibrant city."
+      },
+      {
+        "role": "user",
+        "content": "It is! I'm a software engineer, and in my free time, I love to practice photography."
+      },
+      {
+        "role": "assistant",
+        "content": "A software engineer with a passion for photography, that's a wonderful combination of technical and creative skills."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! The golden hour light here is just perfect for capturing cityscapes."
+      },
+      {
+        "role": "assistant",
+        "content": "I can imagine! The Golden Gate Bridge at sunset must be a fantastic subject."
+      },
+      {
+        "role": "user",
+        "content": "Oh, I misspoke earlier. I actually just moved. I live in Oakland now, just across the bay."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Maya. How are you enjoying Oakland so far?"
+      },
+      {
+        "role": "user",
+        "content": "It's great! My cat, Leo, loves the sunnier weather."
+      },
+      {
+        "role": "assistant",
+        "content": "That's lovely to hear. A happy cat makes for a happy home!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Oakland",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in San Francisco"
+        },
+        {
+          "content": "User is a software engineer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is photography",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a cat named Leo",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's current city of residence?",
+          "expected_facts": [
+            "User lives in Oakland"
+          ]
+        },
+        {
+          "query": "What are Maya's job and hobbies?",
+          "expected_facts": [
+            "User's name is Maya",
+            "User is a software engineer",
+            "User's hobby is photography"
+          ]
+        },
+        {
+          "query": "Does the user enjoy photography in the Bay Area?",
+          "expected_facts": [
+            "User lives in Oakland",
+            "User's hobby is photography"
+          ]
+        },
+        {
+          "query": "Tell me about the user's pet.",
+          "expected_facts": [
+            "User has a cat named Leo"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_4122f36c-d69f-45cb-8e2e-54c2d0d8d38f",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name is Alex and I live in Seattle. I'm a big fan of hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! It's great to meet you. Seattle is a fantastic place for hiking. What kind of trails do you enjoy?"
+      },
+      {
+        "role": "user",
+        "content": "I mostly stick to mountain trails. On a different note, I work as a software engineer. The coffee here is a lifesaver for my job."
+      },
+      {
+        "role": "assistant",
+        "content": "A software engineer fueled by Seattle's famous coffee! That makes perfect sense. It must be great to have so many amazing cafes around."
+      },
+      {
+        "role": "user",
+        "content": "You know, I mentioned I love hiking, but that's not quite right anymore. I used to, but I've recently gotten really into kayaking instead."
+      },
+      {
+        "role": "assistant",
+        "content": "Kayaking is a wonderful hobby! It's a great way to see the city from a different perspective. Have you found any good spots?"
+      },
+      {
+        "role": "user",
+        "content": "Absolutely. I love taking my kayak out on Lake Union whenever it's sunny."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds lovely. Lake Union is beautiful on a sunny day."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a Software Engineer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User thinks the coffee in Seattle is amazing",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is kayaking",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is hiking"
+        },
+        {
+          "content": "User enjoys kayaking on Lake Union",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and what do they do for work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is a Software Engineer"
+          ]
+        },
+        {
+          "query": "What is the user's current main hobby?",
+          "expected_facts": [
+            "User's hobby is kayaking"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy any water activities in Seattle?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's hobby is kayaking",
+            "User enjoys kayaking on Lake Union"
+          ]
+        },
+        {
+          "query": "What did the user used to do as a hobby before their current one?",
+          "expected_facts": [
+            "User's hobby is kayaking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_44641b0a-24fa-4e0e-9b9c-c60ae651fe43",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, I'm Alex. I live in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What's Denver like?"
+      },
+      {
+        "role": "user",
+        "content": "Denver's great. I love hiking in the mountains here. I also have a golden retriever named Leo."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking with a golden retriever sounds amazing! What do you do for work, Alex?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer at a small agency."
+      },
+      {
+        "role": "assistant",
+        "content": "Graphic design is a cool field. Anything else you're passionate about?"
+      },
+      {
+        "role": "user",
+        "content": "Well, I'm also really into landscape photography. Oh, and I just realized I misspoke earlier. I actually live in Boulder now, not Denver. I moved last year."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex. So you live in Boulder now. Landscape photography must be incredible there with the mountains so close!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Boulder",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Denver"
+        },
+        {
+          "content": "User's hobby is hiking in the mountains",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a golden retriever named Leo",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer at a small agency",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is landscape photography",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "Where does Alex live now?",
+          "expected_facts": [
+            "User lives in Boulder"
+          ]
+        },
+        {
+          "query": "What city did the user previously say they lived in?",
+          "expected_facts": [
+            "User lives in Boulder"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy hiking in the mountains near Boulder?",
+          "expected_facts": [
+            "User's hobby is hiking in the mountains",
+            "User lives in Boulder"
+          ]
+        },
+        {
+          "query": "What are Alex's hobbies?",
+          "expected_facts": [
+            "User's hobby is hiking in the mountains",
+            "User's hobby is landscape photography"
+          ]
+        },
+        {
+          "query": "What is Alex's dog's name and breed?",
+          "expected_facts": [
+            "User has a golden retriever named Leo"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_f1139a9c-18ba-4c9b-a459-134b77a3608b",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, I'm Alex. I'm a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What kind of graphic design do you do?"
+      },
+      {
+        "role": "user",
+        "content": "I mostly do branding for tech companies. I'm based in San Diego, by the way. I love playing the guitar in my free time."
+      },
+      {
+        "role": "assistant",
+        "content": "Branding for tech sounds interesting! San Diego is a beautiful city. Do you play in a band?"
+      },
+      {
+        "role": "user",
+        "content": "Not anymore. To be honest, I just sold my guitar last month. I've been getting really into pottery lately. It's so therapeutic."
+      },
+      {
+        "role": "assistant",
+        "content": "Pottery is a wonderful hobby! It's great that you found something new and therapeutic. What do you enjoy most about living in San Diego?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely the beach life. It's so easy to just head down to the coast and relax after a long week of work."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds amazing. The coast can be very relaxing. Is there anything else I can help you with today, Alex?"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a graphic designer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in San Diego",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is pottery",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is playing the guitar"
+        },
+        {
+          "content": "User enjoys the beach life in their city",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name and where do I live?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in San Diego"
+          ]
+        },
+        {
+          "query": "What is my current hobby?",
+          "expected_facts": [
+            "User's hobby is pottery"
+          ]
+        },
+        {
+          "query": "Do I still play the guitar?",
+          "expected_facts": [
+            "User's hobby is pottery"
+          ]
+        },
+        {
+          "query": "What do I enjoy about living in San Diego?",
+          "expected_facts": [
+            "User lives in San Diego",
+            "User enjoys the beach life in their city"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_050dbd76-a039-4be5-829f-d007dc728064",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name is Alex, and I'm living in Seattle."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! It's nice to meet you. What's it like in Seattle?"
+      },
+      {
+        "role": "user",
+        "content": "It's great, though a bit rainy sometimes. I'm really into hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking is a fantastic way to enjoy nature. Are there good trails near you?"
+      },
+      {
+        "role": "user",
+        "content": "Oh, wait, I should clarify. I *used* to hike a lot. These days, I'm much more into kayaking."
+      },
+      {
+        "role": "assistant",
+        "content": "Kayaking sounds wonderful too! Seattle must be a great place for that."
+      },
+      {
+        "role": "user",
+        "content": "It really is. The lakes around here are perfect for it, especially during the summer."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds like a perfect summer day. Is this something you do on weekends?"
+      },
+      {
+        "role": "user",
+        "content": "Exactly. It's a nice break from my job as a software developer."
+      },
+      {
+        "role": "assistant",
+        "content": "I can imagine. It's important to have a hobby that gets you away from the screen."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is kayaking",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is hiking"
+        },
+        {
+          "content": "User works as a software developer",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys kayaking on the lakes in Seattle during the summer",
+          "turn_ids": [
+            0,
+            4,
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What is my current hobby?",
+          "expected_facts": [
+            "User's hobby is kayaking"
+          ]
+        },
+        {
+          "query": "Do I still go hiking?",
+          "expected_facts": [
+            "User's hobby is kayaking"
+          ]
+        },
+        {
+          "query": "What activity do I like to do on the lakes near my city?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's hobby is kayaking",
+            "User enjoys kayaking on the lakes in Seattle during the summer"
+          ]
+        },
+        {
+          "query": "What does Alex do for a living?",
+          "expected_facts": [
+            "User works as a software developer"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_e441a328-bd78-4a02-87cd-056be63e2f9f",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there! My name is Alex. I live in Denver and I really enjoy hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! It's great to meet you. Denver is a fantastic place for hiking. What kind of trails do you prefer?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer, so I love trails with great views for inspiration. The mountain trails near here are amazing for that."
+      },
+      {
+        "role": "assistant",
+        "content": "That makes sense! Combining a passion for design with the beauty of nature sounds wonderful. The mountain views must be incredible."
+      },
+      {
+        "role": "user",
+        "content": "You know, I said I enjoy hiking, but that's not quite right anymore. I used to hike a lot, but recently I've gotten really into rock climbing instead."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex. Rock climbing is a thrilling sport! Do you go to a climbing gym or do you climb outdoors?"
+      },
+      {
+        "role": "user",
+        "content": "A bit of both! I take my dog, Rocky, with me when I go to some of the easier outdoor spots."
+      },
+      {
+        "role": "assistant",
+        "content": "That's adorable! I'm sure Rocky is a great climbing companion. Let me know if there is anything else I can help you with."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "The mountain trails near the user's city are amazing",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is rock climbing",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is hiking"
+        },
+        {
+          "content": "User has a dog named Rocky",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and what do they do for work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is a graphic designer"
+          ]
+        },
+        {
+          "query": "What is Alex's current hobby?",
+          "expected_facts": [
+            "User's hobby is rock climbing"
+          ]
+        },
+        {
+          "query": "Does Alex think the mountain trails in Denver are good?",
+          "expected_facts": [
+            "User lives in Denver",
+            "The mountain trails near the user's city are amazing"
+          ]
+        },
+        {
+          "query": "Does the user still like to hike?",
+          "expected_facts": [
+            "User's hobby is rock climbing"
+          ]
+        },
+        {
+          "query": "Who is Rocky?",
+          "expected_facts": [
+            "User has a dog named Rocky"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_c376bbc9-a7c0-41d2-bf92-a886787173b4",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, I'm trying to set up some smart home routines. My name is Maya."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Maya! I can certainly help with that. What kind of routines are you thinking of?"
+      },
+      {
+        "role": "user",
+        "content": "Well, I live in Seattle, so I'd like a 'rainy day' routine. I'm also a graphic designer, so good lighting is important for my work."
+      },
+      {
+        "role": "assistant",
+        "content": "Great idea. A 'rainy day' routine in Seattle makes a lot of sense. For your graphic design work, we can set up a 'focus mode' with specific lighting. What are some of your hobbies? We could create routines for those too."
+      },
+      {
+        "role": "user",
+        "content": "I love to paint. That's my main hobby. So a 'painting time' routine would be fantastic."
+      },
+      {
+        "role": "assistant",
+        "content": "Perfect. So we have a 'rainy day' routine, a 'focus mode' for graphic design, and a 'painting time' routine. Is there anything else?"
+      },
+      {
+        "role": "user",
+        "content": "Actually, I misspoke earlier. I just moved. I'm in Portland now, not Seattle. The weather is pretty similar though, so the 'rainy day' idea still works."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thank you for the correction. Your location is now set to Portland. We'll keep the 'rainy day' routine. Does the lighting for your painting hobby need to be different from your work lighting?"
+      },
+      {
+        "role": "user",
+        "content": "Yes, definitely. Natural light is best for that. The morning sun is fantastic here, it really helps me see the colors accurately."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood. We'll factor in morning sun for the 'painting time' routine in Portland. I have everything I need to get started on these configurations for you."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is graphic designer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is painting",
+          "turn_ids": [
+            4,
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Seattle"
+        },
+        {
+          "content": "User prefers natural morning sun for painting",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Maya"
+          ]
+        },
+        {
+          "query": "Where does Maya live now?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "Did the user ever live in Seattle?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "What is the user's profession?",
+          "expected_facts": [
+            "User's job is graphic designer"
+          ]
+        },
+        {
+          "query": "Does the user enjoy the morning sun in Portland for her painting hobby?",
+          "expected_facts": [
+            "User lives in Portland",
+            "User's hobby is painting",
+            "User prefers natural morning sun for painting"
+          ]
+        },
+        {
+          "query": "What are Maya's hobbies?",
+          "expected_facts": [
+            "User's hobby is painting"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_8aad512f-9acd-4279-8d41-21d3a98a995e",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there! I'm Alex. I'm trying to plan a weekend trip."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! Great to meet you. Where are you thinking of going?"
+      },
+      {
+        "role": "user",
+        "content": "I live in Seattle, so maybe somewhere nearby. I love hiking, especially with my dog, Buddy."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle is a fantastic place for hiking! There are many trails around. How old is Buddy?"
+      },
+      {
+        "role": "user",
+        "content": "Oh, wait, I always mix that up. My dog's name is actually Buster. He's a 3-year-old golden retriever."
+      },
+      {
+        "role": "assistant",
+        "content": "Buster sounds like a great hiking companion! Given you're in Seattle, have you considered the trails on Mount Rainier? They can be spectacular."
+      },
+      {
+        "role": "user",
+        "content": "That's a great idea! I've been meaning to go there. I also work as a freelance graphic designer, so I'm trying to get away from my desk."
+      },
+      {
+        "role": "assistant",
+        "content": "A trip to Mount Rainier sounds like a perfect break for a graphic designer. Let me know if you'd like some trail suggestions for you and Buster."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a freelance graphic designer",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a dog",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog's name is Buster",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's dog's name is Buddy"
+        },
+        {
+          "content": "User's dog is 3 years old",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog is a golden retriever",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is interested in hiking on Mount Rainier",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's dog's name?",
+          "expected_facts": [
+            "User's dog's name is Buster"
+          ]
+        },
+        {
+          "query": "What does Alex do for work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User works as a freelance graphic designer"
+          ]
+        },
+        {
+          "query": "Does the user like hiking near their home in Seattle?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's hobby is hiking",
+            "User is interested in hiking on Mount Rainier"
+          ]
+        },
+        {
+          "query": "Tell me about the user's pet.",
+          "expected_facts": [
+            "User has a dog",
+            "User's dog's name is Buster",
+            "User's dog is 3 years old",
+            "User's dog is a golden retriever"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_6dd46079-4e90-4e21-8e0a-66df24b1b681",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there, my name is Alex. I'm a graphic designer living in Portland."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! It's great to meet you. Portland is a cool city. What kind of graphic design do you do?"
+      },
+      {
+        "role": "user",
+        "content": "I mostly do branding for small coffee shops. It's a fun niche. My favorite hobby is playing the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "Branding for coffee shops sounds very creative! A fellow musician, I see. What kind of guitar do you play?"
+      },
+      {
+        "role": "user",
+        "content": "An acoustic one. I love taking it to the park on sunny days. The weather here is perfect for it in the summer."
+      },
+      {
+        "role": "assistant",
+        "content": "Playing guitar in the park sounds like a wonderful way to spend a summer day. Anything else you're passionate about?"
+      },
+      {
+        "role": "user",
+        "content": "Well, I'm also a huge foodie. Oh, and I just remembered I made a mistake earlier. I'm actually a *UI/UX designer*, not a general graphic designer. My focus is on digital products."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the clarification, Alex! UI/UX design is a fascinating field. So you design digital experiences for coffee shops?"
+      },
+      {
+        "role": "user",
+        "content": "Sometimes! But my main client right now is a mobile app for local breweries."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a UI/UX designer",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "User's work experience includes branding for small coffee shops",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is playing the guitar",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User plays an acoustic guitar",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys playing guitar in the park during the summer",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a foodie",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's current client is a mobile app for local breweries",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's current job title?",
+          "expected_facts": [
+            "User is a UI/UX designer"
+          ]
+        },
+        {
+          "query": "What kind of clients has Alex worked with?",
+          "expected_facts": [
+            "User's work experience includes branding for small coffee shops",
+            "User's current client is a mobile app for local breweries"
+          ]
+        },
+        {
+          "query": "What does Alex like to do in the park in Portland during the summer?",
+          "expected_facts": [
+            "User lives in Portland",
+            "User enjoys playing guitar in the park during the summer"
+          ]
+        },
+        {
+          "query": "What are the user's hobbies?",
+          "expected_facts": [
+            "User's hobby is playing the guitar",
+            "User is a foodie"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_c4541707-cea6-42ee-bbc9-e9779526ddb9",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, I'm Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm calling from Seattle. I'm really into hiking, especially around here."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle has some amazing trails! Do you have a favorite?"
+      },
+      {
+        "role": "user",
+        "content": "Definitely! Mount Si is a classic. It's a great way to de-stress from my job as a software engineer."
+      },
+      {
+        "role": "assistant",
+        "content": "Software engineering can be demanding. Hiking sounds like a perfect escape."
+      },
+      {
+        "role": "user",
+        "content": "Oh, wait, I just moved. I'm actually in Portland now, not Seattle. The move was last month."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, Portland! Thanks for the update. The hiking is great there too, I hear."
+      },
+      {
+        "role": "user",
+        "content": "It is! The forests in this region are perfect for it."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software engineer",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Seattle"
+        },
+        {
+          "content": "User enjoys hiking in the region where they live",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "Where does the user live?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "What does Alex do for work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is a software engineer"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy hiking in Portland?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's hobby is hiking",
+            "User lives in Portland",
+            "User enjoys hiking in the region where they live"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_d515191a-5af5-4609-84d6-0bcd1e7507e8",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there. My name is Alex and I live in Seattle."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! Seattle is a beautiful city. What do you do for fun?"
+      },
+      {
+        "role": "user",
+        "content": "Thanks! I'm really into hiking and I also play the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking and playing the guitar sound like great hobbies. Are there good hiking trails near you?"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, the trails around here are amazing, especially in the Cascades. It's one of the main reasons I love living here."
+      },
+      {
+        "role": "assistant",
+        "content": "That makes sense. Having great trails nearby must be a huge plus for a hiker."
+      },
+      {
+        "role": "user",
+        "content": "Definitely. On a different note, my job is pretty demanding. I'm a software engineer at a company called 'CloudStream'."
+      },
+      {
+        "role": "assistant",
+        "content": "Software engineering can be intense. What kind of work does CloudStream do?"
+      },
+      {
+        "role": "user",
+        "content": "They're in cloud computing. Oh, and something I said earlier was a bit off. I meant to say I live in Bellevue, which is just east of Seattle. I always just say Seattle because it's easier."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for clarifying. Bellevue it is! It's still a great area for accessing the Cascades, right?"
+      },
+      {
+        "role": "user",
+        "content": "Exactly! The access is just as good."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Bellevue",
+          "turn_ids": [
+            0,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Seattle"
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is playing the guitar",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys hiking in the Cascades near their home",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software engineer",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works at CloudStream",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and profession?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User is a software engineer"
+          ]
+        },
+        {
+          "query": "Where does the user live now?",
+          "expected_facts": [
+            "User lives in Bellevue"
+          ]
+        },
+        {
+          "query": "Does the user live in Seattle?",
+          "expected_facts": [
+            "User lives in Bellevue"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy hiking near Bellevue?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's hobby is hiking",
+            "User lives in Bellevue",
+            "User enjoys hiking in the Cascades near their home"
+          ]
+        },
+        {
+          "query": "What are Alex's hobbies and where does he work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's hobby is hiking",
+            "User's hobby is playing the guitar",
+            "User works at CloudStream"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_93d27fbe-e331-4e8b-8285-463238105878",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there. My name is Maya, and I live in Chicago. I'm a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "It's a pleasure to meet you, Maya! I've heard Chicago is a beautiful city. Graphic design sounds like a fascinating field."
+      },
+      {
+        "role": "user",
+        "content": "It is! One of my favorite things to do is bike along the lakefront. The views are incredible."
+      },
+      {
+        "role": "assistant",
+        "content": "Biking by the lake sounds wonderful. A great way to unwind."
+      },
+      {
+        "role": "user",
+        "content": "Definitely. Oh, I should correct something. I'm originally from Chicago, but I actually moved to Austin last year."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Maya! How are you enjoying Austin?"
+      },
+      {
+        "role": "user",
+        "content": "It's great, though very different. The weather here is perfect for my other hobby, which is training my dog, Leo, for agility competitions."
+      },
+      {
+        "role": "assistant",
+        "content": "That's fantastic! Agility training must be a lot of fun for both you and Leo."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is biking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Austin",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Chicago"
+        },
+        {
+          "content": "User's other hobby is training her dog for agility competitions",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a dog named Leo",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User used to bike along the lakefront in Chicago",
+          "turn_ids": [
+            0,
+            2,
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and job?",
+          "expected_facts": [
+            "User's name is Maya",
+            "User is a graphic designer"
+          ]
+        },
+        {
+          "query": "Where does Maya live now?",
+          "expected_facts": [
+            "User lives in Austin"
+          ]
+        },
+        {
+          "query": "What are the user's hobbies?",
+          "expected_facts": [
+            "User's hobby is biking",
+            "User's other hobby is training her dog for agility competitions"
+          ]
+        },
+        {
+          "query": "Does the user enjoy biking in her current city?",
+          "expected_facts": [
+            "User lives in Austin",
+            "User's hobby is biking"
+          ]
+        },
+        {
+          "query": "What is the user's dog's name?",
+          "expected_facts": [
+            "User has a dog named Leo"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_37e84c17-bea2-4493-8334-111200e8db1e",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there! My name is Maya, and I live in Chicago. I work as a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "It's great to meet you, Maya! I've heard Chicago is a beautiful city. What kind of things do you enjoy designing?"
+      },
+      {
+        "role": "user",
+        "content": "Mostly web assets. For fun, I've been getting into pottery. It's a nice way to unwind."
+      },
+      {
+        "role": "assistant",
+        "content": "Pottery sounds very relaxing. It's wonderful to have a creative hobby that's different from your work."
+      },
+      {
+        "role": "user",
+        "content": "Definitely. The summers here are fantastic for getting outside. I love biking along the lakefront."
+      },
+      {
+        "role": "assistant",
+        "content": "Biking by the lake sounds like a perfect summer day! It's great that you take advantage of the good weather."
+      },
+      {
+        "role": "user",
+        "content": "Oh, actually, I need to correct something I said earlier. I just moved. I live in Denver now, not Chicago."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Maya! I hope you're enjoying Denver. I'll remember that."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Chicago"
+        },
+        {
+          "content": "User's job is a graphic designer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is pottery",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys biking",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name and current job?",
+          "expected_facts": [
+            "User's name is Maya",
+            "User's job is a graphic designer"
+          ]
+        },
+        {
+          "query": "Where do I live now?",
+          "expected_facts": [
+            "User lives in Denver"
+          ]
+        },
+        {
+          "query": "Where did I used to live?",
+          "expected_facts": [
+            "User lives in Denver"
+          ]
+        },
+        {
+          "query": "What are my hobbies?",
+          "expected_facts": [
+            "User's hobby is pottery",
+            "User enjoys biking"
+          ]
+        },
+        {
+          "query": "Does Maya enjoy biking in the city she previously lived in?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User enjoys biking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_fb185f7d-6c5a-4f99-aec3-08b62aa32250",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, my name is Alex and I live in Chicago. It's a great city."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! I agree, Chicago is a fantastic city. What do you do there?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer. For hobbies, I love photography and I'm a huge fan of the local jazz scene."
+      },
+      {
+        "role": "assistant",
+        "content": "A graphic designer with a love for photography, that makes sense! The jazz clubs here are legendary."
+      },
+      {
+        "role": "user",
+        "content": "They really are. The Green Mill is my favorite spot. I go there almost every weekend."
+      },
+      {
+        "role": "assistant",
+        "content": "The Green Mill is a classic. It's great you have a favorite spot \u0938\u094d\u0935\u093e\u0938\u094d\u0925\u094d\u092f \u0915\u0947 \u0932\u093f\u090f\u0964"
+      },
+      {
+        "role": "user",
+        "content": "Wait, I made a mistake earlier. I'm not a graphic designer anymore. I switched careers last year and now I work as a UX researcher."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex. UX researcher, that's a fascinating field! I've updated my notes."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Chicago",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is photography",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a fan of jazz music",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite jazz club is The Green Mill",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is UX researcher",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's job is graphic designer"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my current profession?",
+          "expected_facts": [
+            "User's job is UX researcher"
+          ]
+        },
+        {
+          "query": "What are my hobbies?",
+          "expected_facts": [
+            "User's hobby is photography",
+            "User is a fan of jazz music"
+          ]
+        },
+        {
+          "query": "Do I like jazz music in Chicago?",
+          "expected_facts": [
+            "User lives in Chicago",
+            "User is a fan of jazz music",
+            "User's favorite jazz club is The Green Mill"
+          ]
+        },
+        {
+          "query": "What was my old job?",
+          "expected_facts": [
+            "User's job is UX researcher"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_a4a48c6c-c05e-4f92-a6c2-913d217f1627",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for some project ideas. I'm a graphic designer and in my free time, I love to go hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great! A graphic designer who loves hiking. We could brainstorm some nature-themed design projects. Where do you usually go hiking?"
+      },
+      {
+        "role": "user",
+        "content": "I live in Denver, so I have easy access to the Rockies."
+      },
+      {
+        "role": "assistant",
+        "content": "Denver is a fantastic place for a hiker! The scenery must be incredible."
+      },
+      {
+        "role": "user",
+        "content": "It is! The air is so crisp here, especially in the fall. It's the perfect season for it."
+      },
+      {
+        "role": "assistant",
+        "content": "Sounds lovely. So, project ideas for a graphic designer... perhaps a series of posters for the national parks near you?"
+      },
+      {
+        "role": "user",
+        "content": "That's a good start. Oh, and by the way, I made a mistake earlier. I'm actually a UX designer, not a graphic designer. I focus more on user flows and wireframes."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for the correction. A UX designer. That changes the project scope a bit. We could think about an app for hikers. I've updated my notes."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a UX designer",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User believes fall is the perfect season for hiking near them",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What does Alex do for a living?",
+          "expected_facts": [
+            "User is a UX designer"
+          ]
+        },
+        {
+          "query": "Did the user mention they were a graphic designer before?",
+          "expected_facts": [
+            "User is a UX designer"
+          ]
+        },
+        {
+          "query": "What activity does the user enjoy doing in Denver during the fall?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is hiking",
+            "User believes fall is the perfect season for hiking near them"
+          ]
+        },
+        {
+          "query": "Where does Alex live?",
+          "expected_facts": [
+            "User lives in Denver"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_7a759026-3e4d-4e83-9673-010b43b3e6e1",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, my name is Maya. I live in Austin."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Maya! I've heard Austin is a vibrant city. What do you do for a living?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer. I mostly work on branding for tech startups."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds creative! Tech and design are a great combination. Do you have any hobbies?"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, I love paddleboarding. It's one of my favorite things about living here, the lakes are perfect for it."
+      },
+      {
+        "role": "assistant",
+        "content": "Paddleboarding on the lakes in Austin sounds like a perfect way to spend a weekend. Do you go often?"
+      },
+      {
+        "role": "user",
+        "content": "As much as I can! Oh, and speaking of my work, I made a mistake earlier. I'm actually a UX designer, not a graphic designer. I switched my focus about a year ago."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the correction! I've updated my notes. So, you're a UX designer for tech startups. That's a very in-demand skill."
+      },
+      {
+        "role": "user",
+        "content": "It keeps me busy! I also have a pet cat named Luna."
+      },
+      {
+        "role": "assistant",
+        "content": "A cat named Luna, that's a lovely name. I'll remember that."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Austin",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a UX designer",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "User works on branding for tech startups",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is paddleboarding",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a pet cat named Luna",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my job title?",
+          "expected_facts": [
+            "User is a UX designer"
+          ]
+        },
+        {
+          "query": "Where do I live and what's my cat's name?",
+          "expected_facts": [
+            "User lives in Austin",
+            "User has a pet cat named Luna"
+          ]
+        },
+        {
+          "query": "Does Maya enjoy paddleboarding in Austin?",
+          "expected_facts": [
+            "User lives in Austin",
+            "User's hobby is paddleboarding"
+          ]
+        },
+        {
+          "query": "What was the job I mentioned before I corrected myself?",
+          "expected_facts": [
+            "User is a UX designer"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_7159f34b-5b20-4ffa-9cf2-db1122c1fc1a",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, my name is Maya. I live in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "It's a pleasure to meet you, Maya! I hear Denver is beautiful. What do you do for a living?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a freelance writer. It gives me a lot of flexibility."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds like a great career. What do you enjoy writing about?"
+      },
+      {
+        "role": "user",
+        "content": "Mostly travel and food. I love exploring the restaurant scene here."
+      },
+      {
+        "role": "assistant",
+        "content": "That's fantastic! A food and travel writer in Denver must have a lot of great stories."
+      },
+      {
+        "role": "user",
+        "content": "I do! Oh, and I made a mistake earlier. I'm actually a staff writer for a magazine called 'Wanderlust Weekly', not a freelancer anymore. I just started last month."
+      },
+      {
+        "role": "assistant",
+        "content": "Congratulations on the new job, Maya! Thanks for the update. 'Wanderlust Weekly' sounds like a perfect fit."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! It's been great. My other big hobby is pottery. I have a small studio in my apartment."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works at Wanderlust Weekly",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a freelance writer"
+        },
+        {
+          "content": "User's writing topics include travel and food",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is pottery",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Maya"
+          ]
+        },
+        {
+          "query": "Where does Maya work now?",
+          "expected_facts": [
+            "User works at Wanderlust Weekly"
+          ]
+        },
+        {
+          "query": "Does the user like exploring the food scene in Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's writing topics include travel and food"
+          ]
+        },
+        {
+          "query": "What are Maya's hobbies?",
+          "expected_facts": [
+            "User's hobby is pottery",
+            "User's writing topics include travel and food"
+          ]
+        },
+        {
+          "query": "What was the user's previous job?",
+          "expected_facts": [
+            "User works at Wanderlust Weekly"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_baf3219e-2872-417a-97fb-c2d54029602e",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for some good coffee shop recommendations. I'm a graphic designer, and I often work from cafes. I also love playing the guitar in my free time."
+      },
+      {
+        "role": "assistant",
+        "content": "A graphic designer who plays guitar, that's cool! To give you the best recommendations, could you tell me where you're located?"
+      },
+      {
+        "role": "user",
+        "content": "Sure, I live in Portland, Oregon."
+      },
+      {
+        "role": "assistant",
+        "content": "Portland has a great coffee scene! You might like 'Stumptown Coffee Roasters'. It's very popular."
+      },
+      {
+        "role": "user",
+        "content": "Oh, wait, I misspoke. I meant I *used* to be a graphic designer. I just switched careers. I'm a UX researcher now."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for the update, Alex. UX researcher, that's a fascinating field. Does that change the kind of cafe you're looking for?"
+      },
+      {
+        "role": "user",
+        "content": "Not really, I still need good wifi. I'm also hoping to find a place near a park. It's so nice to take a break and walk around here, especially with my dog, Buster."
+      },
+      {
+        "role": "assistant",
+        "content": "I see. In that case, 'Good Coffee' on NW 23rd Ave is near Wallace Park. It has reliable wifi and is dog-friendly. You and Buster might enjoy it."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a UX researcher",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "User's hobby is playing the guitar",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland, Oregon",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User has a dog named Buster",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "What does Alex do for work?",
+          "expected_facts": [
+            "User is a UX researcher"
+          ]
+        },
+        {
+          "query": "Is the user a graphic designer?",
+          "expected_facts": [
+            "User is a UX researcher"
+          ]
+        },
+        {
+          "query": "Does the user like to walk his dog in Portland?",
+          "expected_facts": [
+            "User lives in Portland, Oregon",
+            "User has a dog named Buster"
+          ]
+        },
+        {
+          "query": "What is the name of Alex's pet?",
+          "expected_facts": [
+            "User has a dog named Buster"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_a50a7368-2ba6-412e-a2de-35cd44f888d2",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, I'm Maya. I work as a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Maya! It's nice to meet you. What kind of graphic design do you specialize in?"
+      },
+      {
+        "role": "user",
+        "content": "I focus on brand identity. On a different note, I live in Seattle, and my main hobby is painting."
+      },
+      {
+        "role": "assistant",
+        "content": "Brand identity sounds very creative! And Seattle is a beautiful city, a great place for an artist."
+      },
+      {
+        "role": "user",
+        "content": "It really is. I love painting the waterfront here, especially on clear days."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds wonderful. The combination of water and city skyline must be very inspiring."
+      },
+      {
+        "role": "user",
+        "content": "Oh, an update on my job \u2013 I actually just got a promotion. I'm a Senior Graphic Designer now, not just a graphic designer."
+      },
+      {
+        "role": "assistant",
+        "content": "Congratulations on the promotion to Senior Graphic Designer! That's fantastic news."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! It's been a busy week. My cat, Luna, has been keeping me company through it all."
+      },
+      {
+        "role": "assistant",
+        "content": "It's great you have a furry companion like Luna to help you through the busy times."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is painting",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys painting the waterfront in her city of residence (Seattle)",
+          "turn_ids": [
+            2,
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's job is a Senior Graphic Designer",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's job is a graphic designer"
+        },
+        {
+          "content": "User has a cat named Luna",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Maya"
+          ]
+        },
+        {
+          "query": "What is Maya's current job title?",
+          "expected_facts": [
+            "User's job is a Senior Graphic Designer"
+          ]
+        },
+        {
+          "query": "What was Maya's job before her promotion?",
+          "expected_facts": [
+            "User's job is a Senior Graphic Designer"
+          ]
+        },
+        {
+          "query": "What does Maya like to do for fun in Seattle?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's hobby is painting",
+            "User enjoys painting the waterfront in her city of residence (Seattle)"
+          ]
+        },
+        {
+          "query": "Does the user have any pets?",
+          "expected_facts": [
+            "User has a cat named Luna"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_bf0f7121-0814-4bab-8a6a-e34e19b159e6",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! How can I assist you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for some good hiking trails. I'm an avid hiker and I live in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Denver is a fantastic city for hikers! I can certainly help with that. Any specific difficulty you're looking for?"
+      },
+      {
+        "role": "user",
+        "content": "Medium difficulty is fine. I'm a software developer, so I'm usually eager to get outside after a week at the desk."
+      },
+      {
+        "role": "assistant",
+        "content": "Great. A medium trail sounds like a perfect break from software development. How about the 'Trading Post Trail' at Red Rocks?"
+      },
+      {
+        "role": "user",
+        "content": "Sounds good, thanks. Oh, and by the way, I made a mistake earlier. My name is actually Sam. Alex is my brother."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for the correction, Sam! I've updated my records. So, Sam the software developer in Denver. Anything else?"
+      },
+      {
+        "role": "user",
+        "content": "One more thing. The summers here are perfect for biking, which is another hobby of mine. Do you know any good bike paths?"
+      },
+      {
+        "role": "assistant",
+        "content": "Absolutely! Since you're in Denver, the Cherry Creek Bike Path is a very popular and scenic option. It runs for over 40 miles."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Sam",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's name is Alex"
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software developer",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is biking",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's correct name?",
+          "expected_facts": [
+            "User's name is Sam"
+          ]
+        },
+        {
+          "query": "What are the user's hobbies?",
+          "expected_facts": [
+            "User's hobby is hiking",
+            "User's hobby is biking"
+          ]
+        },
+        {
+          "query": "Did the user correct their name? If so, what was the original name they provided?",
+          "expected_facts": [
+            "User's name is Sam"
+          ]
+        },
+        {
+          "query": "What does the user, who lives in Denver, do for work?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User is a software developer"
+          ]
+        },
+        {
+          "query": "Does the user enjoy biking in the city where they live?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is biking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_3e881ff8-da01-4f42-98a1-497e22611655",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, my name is Alex and I live in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! I've heard Denver is beautiful. What do you do for a living?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer. I mostly work from home."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great! What do you enjoy doing for fun in your free time?"
+      },
+      {
+        "role": "user",
+        "content": "I love hiking. The trails around here are amazing, especially in the Rockies."
+      },
+      {
+        "role": "assistant",
+        "content": "Hiking in the Rockies sounds incredible! Any other hobbies?"
+      },
+      {
+        "role": "user",
+        "content": "Yeah, I'm also learning to play the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "A graphic designer who hikes and plays guitar! Very cool."
+      },
+      {
+        "role": "user",
+        "content": "Oh, actually, I should correct myself. I tried the guitar but didn't stick with it. I'm learning the piano now."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, piano it is! Thanks for the update. How is that going?"
+      },
+      {
+        "role": "user",
+        "content": "It's challenging but fun. My apartment building has a strict no-noise policy after 10 PM, so I have to use headphones."
+      },
+      {
+        "role": "assistant",
+        "content": "That makes sense. It's good you have a way to practice without disturbing anyone."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is learning the piano",
+          "turn_ids": [
+            6,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User is learning to play the guitar"
+        },
+        {
+          "content": "User's apartment has a no-noise policy after 10 PM",
+          "turn_ids": [
+            10
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and where do they live?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Denver"
+          ]
+        },
+        {
+          "query": "What instrument is Alex learning to play?",
+          "expected_facts": [
+            "User is learning the piano"
+          ]
+        },
+        {
+          "query": "What instrument did Alex try to learn before the piano?",
+          "expected_facts": [
+            "User is learning the piano"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy hiking near Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is hiking"
+          ]
+        },
+        {
+          "query": "Why does Alex have to use headphones when practicing their instrument late at night?",
+          "expected_facts": [
+            "User is learning the piano",
+            "User's apartment has a no-noise policy after 10 PM"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_04c08ae7-3f12-44c6-bdf7-bfb25ec98483",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi there. My name is Alex, I live in Seattle, and I love hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Hello Alex! It's great to meet you. Seattle is a beautiful city with wonderful hiking trails."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! On a different note, I work as a software developer."
+      },
+      {
+        "role": "assistant",
+        "content": "That's interesting. What kind of software do you develop?"
+      },
+      {
+        "role": "user",
+        "content": "Mostly web applications. And actually, I need to correct something I said earlier. I used to hike a lot, but these days I'm much more into kayaking."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, I've updated that. Kayaking it is! That sounds like a lot of fun too."
+      },
+      {
+        "role": "user",
+        "content": "It really is. The lakes around here are perfect for it."
+      },
+      {
+        "role": "assistant",
+        "content": "I can imagine! The scenery on Lake Union or Lake Washington must be amazing from a kayak."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a software developer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is kayaking",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is hiking"
+        },
+        {
+          "content": "The lakes near Seattle are suitable for kayaking",
+          "turn_ids": [
+            0,
+            4,
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name and job?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User works as a software developer"
+          ]
+        },
+        {
+          "query": "What hobby did the user say he enjoys now?",
+          "expected_facts": [
+            "User's hobby is kayaking"
+          ]
+        },
+        {
+          "query": "Does Alex enjoy kayaking in Seattle?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Seattle",
+            "User's hobby is kayaking",
+            "The lakes near Seattle are suitable for kayaking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_a5055c81-794b-4f80-bea2-7ba8a2e37a10",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there, my name is Alex and I'm from Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Hi Alex! It's nice to meet you. What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "Just wanted to chat. I've been getting into hiking lately, and I also play the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great! Hiking and playing the guitar are wonderful hobbies."
+      },
+      {
+        "role": "user",
+        "content": "Oh, wait, I should correct something. I just moved. I'm actually in Boulder now, not Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update, Alex! Welcome to Boulder. I've updated your location."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! The trails here are amazing for getting out on the weekends."
+      },
+      {
+        "role": "assistant",
+        "content": "I bet! Boulder is famous for its beautiful hiking trails. It sounds like a perfect fit for you."
+      },
+      {
+        "role": "user",
+        "content": "It really is. When I'm not hiking, I'm working as a software engineer."
+      },
+      {
+        "role": "assistant",
+        "content": "A software engineer who hikes and plays guitar. You have a great mix of interests!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Boulder",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Denver"
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is playing the guitar",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a software engineer",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User thinks the trails in their current city (Boulder) are amazing for weekend activities",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name and what do I do for work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User works as a software engineer"
+          ]
+        },
+        {
+          "query": "Where do I live now?",
+          "expected_facts": [
+            "User lives in Boulder"
+          ]
+        },
+        {
+          "query": "What city did I tell you I lived in before I corrected myself?",
+          "expected_facts": [
+            "User lives in Boulder"
+          ]
+        },
+        {
+          "query": "Do I enjoy hiking where I live?",
+          "expected_facts": [
+            "User lives in Boulder",
+            "User's hobby is hiking",
+            "User thinks the trails in their current city (Boulder) are amazing for weekend activities"
+          ]
+        },
+        {
+          "query": "List my hobbies.",
+          "expected_facts": [
+            "User's hobby is hiking",
+            "User's hobby is playing the guitar"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_33af44e6-d6e7-4ccf-84db-f97b2706f711",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, my name's Alex. I'm a guitarist and I live in Boston."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! Boston is a great city. What do you do for work?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a software developer. It's a decent job, but I'm really passionate about music. The scene here is pretty amazing for that."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great that you have a creative outlet you're passionate about. It must be inspiring to be a software developer in a city with an amazing music scene."
+      },
+      {
+        "role": "user",
+        "content": "Oh, actually, I made a mistake. I just moved. I'm not in Boston anymore, I'm just across the river in Cambridge now."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, thanks for the correction! I'll remember you live in Cambridge. I hope you're enjoying it there."
+      },
+      {
+        "role": "user",
+        "content": "I am! My dog, Rusty, is especially loving all the new parks in the area."
+      },
+      {
+        "role": "assistant",
+        "content": "That's wonderful to hear. A happy dog makes for a happy home. It sounds like you and Rusty are settling into Cambridge nicely."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a guitarist",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software developer",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User believes their local area has an amazing music scene",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Cambridge",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User lives in Boston"
+        },
+        {
+          "content": "User has a dog named Rusty",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's dog Rusty loves the local parks",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's job?",
+          "expected_facts": [
+            "User is a software developer"
+          ]
+        },
+        {
+          "query": "Where does Alex live now?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Cambridge"
+          ]
+        },
+        {
+          "query": "Does the user still live in Boston?",
+          "expected_facts": [
+            "User lives in Cambridge"
+          ]
+        },
+        {
+          "query": "Does Alex's dog, Rusty, enjoy the parks in Cambridge?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User has a dog named Rusty",
+            "User lives in Cambridge",
+            "User's dog Rusty loves the local parks"
+          ]
+        },
+        {
+          "query": "Why does Alex like living in his current city?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User lives in Cambridge",
+            "User believes their local area has an amazing music scene",
+            "User is a guitarist"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_9bcfddae-c755-4197-a669-fdda9007c91d",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, I'm Alex. I'm a graphic designer from Chicago."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! Chicago is a great city. What kind of graphic design do you do?"
+      },
+      {
+        "role": "user",
+        "content": "I mostly do branding for tech companies. On the side, I'm really into pottery."
+      },
+      {
+        "role": "assistant",
+        "content": "Pottery sounds very relaxing! Do you have a studio at home?"
+      },
+      {
+        "role": "user",
+        "content": "No, I go to a local studio. Oh, and I should clarify, I just moved. I'm actually in Portland now, not Chicago anymore."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, Alex. Portland it is! How are you liking the city so far?"
+      },
+      {
+        "role": "user",
+        "content": "It's great! The rainy weather here is perfect for spending a lot of time indoors working on my craft."
+      },
+      {
+        "role": "assistant",
+        "content": "That's a great way to look at it. Enjoy the studio time in Portland!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a graphic designer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is pottery",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Portland",
+          "turn_ids": [
+            0,
+            4
+          ],
+          "is_update": true,
+          "previous_value": "User lived in Chicago"
+        },
+        {
+          "content": "User appreciates Portland's rainy weather for indoor hobbies",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Alex"
+          ]
+        },
+        {
+          "query": "Where does the user live now?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "Did the user say they live in Chicago?",
+          "expected_facts": [
+            "User lives in Portland"
+          ]
+        },
+        {
+          "query": "Why might Alex enjoy doing pottery in Portland?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User's hobby is pottery",
+            "User lives in Portland",
+            "User appreciates Portland's rainy weather for indoor hobbies"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_96be2b26-9c6f-4a4f-92ec-0c4b7c6cff60",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hi, I'm Maya. Nice to meet you."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you too, Maya! How can I help you today?"
+      },
+      {
+        "role": "user",
+        "content": "I'm looking for some project management tools. I'm a software developer, and my team is growing."
+      },
+      {
+        "role": "assistant",
+        "content": "Great! For a growing software development team, tools like Jira, Trello, or Asana are very popular. Do you have any specific requirements?"
+      },
+      {
+        "role": "user",
+        "content": "We need something with good integration capabilities. By the way, on a totally different note, I just got back from my pottery class. It's my favorite way to unwind."
+      },
+      {
+        "role": "assistant",
+        "content": "Pottery sounds like a wonderful hobby! It's great to have a creative outlet. Regarding the tools, Jira is known for its powerful integrations, especially within the Atlassian ecosystem."
+      },
+      {
+        "role": "user",
+        "content": "Okay, I'll look into Jira. Thanks. It's been a busy week here in San Francisco."
+      },
+      {
+        "role": "assistant",
+        "content": "You're welcome! I hope you have a relaxing weekend in San Francisco. Is there anything else I can assist you with?"
+      },
+      {
+        "role": "user",
+        "content": "Actually, one more thing. I mentioned I'm a software developer, right? Well, I just got promoted! I'm a Senior Software Engineer now."
+      },
+      {
+        "role": "assistant",
+        "content": "Congratulations on your promotion to Senior Software Engineer, Maya! That's fantastic news."
+      },
+      {
+        "role": "user",
+        "content": "Thanks! I'm excited. I'm planning to celebrate by going hiking this weekend. I love hiking, especially with the amazing coastal views we get here."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds like a perfect way to celebrate. The coastal trails must be beautiful. Enjoy your hike!"
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is pottery",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in San Francisco",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User enjoys hiking",
+          "turn_ids": [
+            10
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a Senior Software Engineer",
+          "turn_ids": [
+            2,
+            8
+          ],
+          "is_update": true,
+          "previous_value": "User works as a Software Developer"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Maya"
+          ]
+        },
+        {
+          "query": "What is Maya's current job title?",
+          "expected_facts": [
+            "User works as a Senior Software Engineer"
+          ]
+        },
+        {
+          "query": "What does the user do to unwind?",
+          "expected_facts": [
+            "User's hobby is pottery"
+          ]
+        },
+        {
+          "query": "Does Maya enjoy hiking in San Francisco?",
+          "expected_facts": [
+            "User lives in San Francisco",
+            "User enjoys hiking"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_241cd57f-e14d-440f-9aca-3832646bf576",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name is Maya, and I live in Denver."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Maya! I've heard Denver is beautiful. What do you do for a living?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a graphic designer. My main hobby is playing the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "A creative person all around! How long have you been playing the guitar?"
+      },
+      {
+        "role": "user",
+        "content": "About 5 years now. It's a great way to unwind. The weather here is perfect for sitting on the porch and playing."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds lovely. A perfect way to enjoy the Denver weather."
+      },
+      {
+        "role": "user",
+        "content": "For sure. Oh, and I should correct something. I used to be a graphic designer, but I recently switched careers. I'm a UX researcher now."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update! UX researcher, that's a fascinating field. It seems like a natural transition from graphic design."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Maya",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Denver",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is playing the guitar",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a UX researcher",
+          "turn_ids": [
+            2,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User is a graphic designer"
+        },
+        {
+          "content": "User has been playing guitar for about 5 years",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name?",
+          "expected_facts": [
+            "User's name is Maya"
+          ]
+        },
+        {
+          "query": "What is my current job?",
+          "expected_facts": [
+            "User is a UX researcher"
+          ]
+        },
+        {
+          "query": "What did I used to do for work?",
+          "expected_facts": [
+            "User is a UX researcher"
+          ]
+        },
+        {
+          "query": "Does the user enjoy playing guitar in Denver?",
+          "expected_facts": [
+            "User lives in Denver",
+            "User's hobby is playing the guitar"
+          ]
+        },
+        {
+          "query": "How long have I been pursuing my hobby?",
+          "expected_facts": [
+            "User's hobby is playing the guitar",
+            "User has been playing guitar for about 5 years"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_843fb2d9-c1d2-4750-a362-f4bb444ccb64",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey, my name is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! What can I help you with today?"
+      },
+      {
+        "role": "user",
+        "content": "Just wanted to chat. For fun, I'm a big fan of hiking and I also play the guitar."
+      },
+      {
+        "role": "assistant",
+        "content": "That's great! Hiking and playing the guitar are wonderful hobbies. Any favorite trails or songs?"
+      },
+      {
+        "role": "user",
+        "content": "I love the trails up near Mount Rainier. I live in Seattle, so it's a pretty easy drive."
+      },
+      {
+        "role": "assistant",
+        "content": "Seattle is a beautiful city! It must be great for outdoor activities."
+      },
+      {
+        "role": "user",
+        "content": "Definitely. The summers here are perfect for getting outdoors and enjoying the trails."
+      },
+      {
+        "role": "assistant",
+        "content": "I can imagine. Besides your hobbies, what do you do for a living, Alex?"
+      },
+      {
+        "role": "user",
+        "content": "I'm a software developer at a company called CloudNet."
+      },
+      {
+        "role": "assistant",
+        "content": "A software developer at CloudNet, got it. Thanks for sharing!"
+      },
+      {
+        "role": "user",
+        "content": "You know, I mentioned hiking earlier, but actually, I'm more into trail running these days. It's a bit easier on my knees."
+      },
+      {
+        "role": "assistant",
+        "content": "Thanks for the update! Trail running it is. It's great that you've found an activity that works better for you."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Alex",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is playing the guitar",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User likes the trails near Mount Rainier",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User thinks the summers where they live are perfect for outdoor activities",
+          "turn_ids": [
+            6
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works as a software developer at CloudNet",
+          "turn_ids": [
+            8
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is trail running",
+          "turn_ids": [
+            2,
+            10
+          ],
+          "is_update": true,
+          "previous_value": "User's hobby is hiking"
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is my name and where do I work?",
+          "expected_facts": [
+            "User's name is Alex",
+            "User works as a software developer at CloudNet"
+          ]
+        },
+        {
+          "query": "What are my current hobbies?",
+          "expected_facts": [
+            "User's hobby is playing the guitar",
+            "User's hobby is trail running"
+          ]
+        },
+        {
+          "query": "Do I still enjoy hiking?",
+          "expected_facts": [
+            "User's hobby is trail running"
+          ]
+        },
+        {
+          "query": "What do I think about doing outdoor activities in Seattle during the summer?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User thinks the summers where they live are perfect for outdoor activities"
+          ]
+        },
+        {
+          "query": "Based on my hobbies and location, is there a good place for me to go trail running?",
+          "expected_facts": [
+            "User's hobby is trail running",
+            "User lives in Seattle",
+            "User likes the trails near Mount Rainier"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "conversation_id": "conv_46ddc2da-5815-410c-aaa6-9350bfc229c5",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Hey there. My name is Alex and I live in Seattle. I'm a software developer."
+      },
+      {
+        "role": "assistant",
+        "content": "Nice to meet you, Alex! Seattle is a great city. What kind of software do you develop?"
+      },
+      {
+        "role": "user",
+        "content": "I work on mobile apps, mostly for a company called 'ConnectSphere'. My main hobby is hiking."
+      },
+      {
+        "role": "assistant",
+        "content": "Mobile apps at ConnectSphere sound interesting! Hiking must be amazing around Seattle."
+      },
+      {
+        "role": "user",
+        "content": "Yeah, the trails on Mount Rainier are my favorite. The air is so fresh up there."
+      },
+      {
+        "role": "assistant",
+        "content": "Mount Rainier is beautiful. Do you go often?"
+      },
+      {
+        "role": "user",
+        "content": "Pretty often, yeah. Oh, and I made a mistake earlier. My name isn't Alex, it's actually Sam. Alex is my middle name, I always mix them up."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it, Sam! Thanks for clarifying. I'll remember that."
+      }
+    ],
+    "ground_truth": {
+      "facts": [
+        {
+          "content": "User's name is Sam",
+          "turn_ids": [
+            0,
+            6
+          ],
+          "is_update": true,
+          "previous_value": "User's name is Alex"
+        },
+        {
+          "content": "User lives in Seattle",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User is a software developer",
+          "turn_ids": [
+            0
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works on mobile apps",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User works at ConnectSphere",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's hobby is hiking",
+          "turn_ids": [
+            2
+          ],
+          "is_update": false
+        },
+        {
+          "content": "User's favorite hiking trails are on Mount Rainier",
+          "turn_ids": [
+            4
+          ],
+          "is_update": false
+        }
+      ],
+      "queries": [
+        {
+          "query": "What is the user's name?",
+          "expected_facts": [
+            "User's name is Sam"
+          ]
+        },
+        {
+          "query": "Where does the user who likes hiking live?",
+          "expected_facts": [
+            "User lives in Seattle",
+            "User's hobby is hiking"
+          ]
+        },
+        {
+          "query": "Does Sam enjoy hiking near Seattle?",
+          "expected_facts": [
+            "User's name is Sam",
+            "User lives in Seattle",
+            "User's hobby is hiking",
+            "User's favorite hiking trails are on Mount Rainier"
+          ]
+        },
+        {
+          "query": "What was the name the user initially provided before correcting it?",
+          "expected_facts": [
+            "User's name is Sam"
+          ]
+        },
+        {
+          "query": "What company does Sam, the mobile app developer, work for?",
+          "expected_facts": [
+            "User's name is Sam",
+            "User is a software developer",
+            "User works on mobile apps",
+            "User works at ConnectSphere"
+          ]
+        }
+      ]
+    }
+  }
+]
