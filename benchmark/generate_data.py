@@ -4,6 +4,7 @@ import json
 import os
 import uuid
 from openai import OpenAI # Using OpenAI's library as per the assignment's proxy compatibility
+from tqdm import tqdm
 from dotenv import load_dotenv
 
 # --- Configuration ---
@@ -12,78 +13,63 @@ from dotenv import load_dotenv
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_API_BASE"))
 MODEL_NAME = "gemini-2.5-pro"
-NUM_CONVERSATIONS = 50 # Increased dataset size to meet requirements
+NUM_CONVERSATIONS = 20 # Increased dataset size to meet requirements
 
-# --- Prompts for Data Generation ---
-# This prompt asks the LLM to generate not just the conversation,
-# but also the ground truth data we need for evaluation.
+
+# --- New, Schema-Aware Prompt ---
 GENERATION_PROMPT_TEMPLATE = """
-You are a data generator for testing an AI memory system. Your task is to create a realistic, multi-turn conversation and the corresponding ground truth data for evaluation.
+You are a data generator for testing an AI memory system. Your task is to create a single, realistic, multi-turn conversation and its corresponding ground truth evaluation data in a specific JSON format.
 
-The conversation should include:
-1.  **Simple Fact Storage**: At least 3-4 basic facts about the user (e.g., name, city, hobbies, job).
+The conversation MUST include:
+1.  **Simple Fact Storage**: At least 3-4 basic facts about the user.
 2.  **Fact Update/Correction**: The user must correct a piece of information they gave earlier.
-3.  **Multi-hop Reasoning**: Include facts that are related, requiring the system to connect them. For example, "I live in Brooklyn" and later "The summers are great here for biking." A query like "Does the user like biking in Brooklyn?" would require multi-hop reasoning.
+3.  **Multi-hop Reasoning Scenario**: Facts that are related and can be used for a multi-hop reasoning query.
 
-Generate a JSON object with the following structure:
-- `conversation_id`: A unique identifier.
-- `turns`: A list of conversation turns, with `role` ('user' or 'assistant') and `content`.
-- `ground_truth`:
-  - `facts`: A list of all facts that should be extracted. Each fact should have:
-    - `content`: The structured fact (e.g., "User's name is Maya").
-    - `turn_ids`: A list of turn indices (starting from 0) where this fact is mentioned or updated.
-    - `is_update`: A boolean indicating if this is an update to a previous fact.
-    - `previous_value` (optional): The old value if `is_update` is true.
-  - `queries`: A list of questions to test the memory system. Each query should have:
-    - `query`: The question.
-    - `expected_facts`: A list of the exact `content` of the facts needed to answer the query.
+Generate a single JSON object with the following structure:
+- `conversation_id`: A unique string.
+- `scenario`: A brief, one-sentence description of the conversation's purpose (e.g., "User plans a trip and corrects their destination.").
+- `turns`: A list of conversation turns, each with a `role` ('user' or 'assistant') and `content`.
+- `ground_truth_events`: A list of evaluation events. Each event is a JSON object with:
+  - `turn_index`: The zero-based index of the turn where this event should be evaluated.
+  - `event_type`: Can be "EXTRACTION", "UPDATE", or "RETRIEVAL".
+  - `expected_fact`: The semantic content of the fact. For EXTRACTION, this is the fact that should be saved. For UPDATE, it's the *new* value of the fact. For RETRIEVAL, it's the fact that should be returned.
+  - `fact_id_to_update`: (Only for "UPDATE" events) A unique string ID for the fact being updated. The initial EXTRACTION event for this fact must also use this same ID. This can be null for other event types.
+  - `retrieval_query`: (Only for "RETRIEVAL" events) The question to test retrieval. This can be null for other event types.
 
-Ensure the final output is only the JSON object, without any other text or markdown.
+RULES:
+- For every new fact introduced by the user, create an "EXTRACTION" event.
+- For a fact correction, create an "UPDATE" event. Assign a consistent `fact_id_to_update` to both the original extraction and the update event.
+- Create at least one "RETRIEVAL" event that tests the memory.
 
-Example Fact Update:
-{"role": "user", "content": "I work at a startup called 'InnovateAI'."}
-...
-{"role": "user", "content": "Actually, I switched jobs. I now work at 'Global Tech'."}
-
-Ground truth for this update:
-{
-  "content": "User works at Global Tech",
-  "turn_ids": [X, Y],
-  "is_update": true,
-  "previous_value": "User works at InnovateAI"
-}
+The final output must be only the JSON object, without any markdown formatting or other text.
 """
 
 def generate_synthetic_dataset():
     """Generates a dataset of conversations with ground truth for evaluation."""
     print(f"Generating {NUM_CONVERSATIONS} conversations...")
     dataset = []
-    for i in range(NUM_CONVERSATIONS):
+    for _ in tqdm(range(NUM_CONVERSATIONS), desc="Generating Conversations"):
         try:
-            print(f"Generating conversation {i+1}/{NUM_CONVERSATIONS}...")
             completion = client.chat.completions.create(
                 model=MODEL_NAME,
                 messages=[{"role": "user", "content": GENERATION_PROMPT_TEMPLATE}],
-                temperature=0.8,
+                temperature=0.7,
+                response_format={"type": "json_object"} # Use JSON mode for reliability
             )
             
             response_text = completion.choices[0].message.content
-            # Clean up potential markdown formatting
-            if response_text.strip().startswith("```json"):
-                response_text = response_text.strip()[7:-3]
-            
             generated_data = json.loads(response_text)
+            
+            # Ensure a unique ID, just in case the model doesn't
             generated_data['conversation_id'] = f"conv_{uuid.uuid4()}"
             dataset.append(generated_data)
 
         except Exception as e:
-            print(f"Error generating conversation {i+1}: {e}")
-            print("Skipping this one.")
+            print(f"Error during generation: {e}. Skipping this conversation.")
     
     return dataset
 
 if __name__ == "__main__":
-    # Create benchmark directory if it doesn't exist
     if not os.path.exists("benchmark"):
         os.makedirs("benchmark")
         
@@ -94,6 +80,6 @@ if __name__ == "__main__":
         with open(output_path, "w") as f:
             json.dump(generated_dataset, f, indent=2)
         print(f"\nSuccessfully generated {len(generated_dataset)} conversations.")
-        print(f"Dataset saved to {output_path}")
+        print(f"New dataset saved to {output_path}")
     else:
-        print("Dataset generation failed.")
+        print("\nDataset generation failed. Check API keys and model availability.")
