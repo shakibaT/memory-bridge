@@ -87,28 +87,44 @@ python main.py
 **Expected Output:**
 ```
 --- Initializing Memory Bridge Demo ---
-INFO: MemoryStore initialized and connected to collection 'memories'.
+INFO: Created new collection 'memories' for 384D embeddings.
+INFO: Empty collection - ready for 384D embeddings.
 INFO: Agent initialized with model 'gemini-2.5-pro' and 3 tools.
 
 --- Starting Demo Conversation ---
 
 --- Processing Turn 0 ---
+TOOL: Executing write_memory with content: 'User's name is Alice'
+INFO: Wrote memory '1' to store.
 AGENT: Executed 'write_memory'.
-...
+TOOL: Executing write_memory with content: 'User is a project manager at Innovate Inc.'
+INFO: Wrote memory '2' to store.
+AGENT: Executed 'write_memory'.
+AGENT: Decided no further tools are necessary for this turn.
+
 --- Processing Turn 1 ---
 AGENT: Skipping turn because it is not a user message.
 
 --- Processing Turn 2 ---
-TOOL: Executing read_memory with query: 'user's current role'
+TOOL: Executing read_memory with query: 'user is a project manager'
 AGENT: Executed 'read_memory'.
-TOOL: Executing update_memory for fact 'fact_...'.
+TOOL: Executing update_memory for fact '2'
+INFO: Upserted memory '2' in store.
 AGENT: Executed 'update_memory'.
+AGENT: Decided no further tools are necessary for this turn.
+
+--- Demo Conversation Finished ---
 
 --- Final State of Memory Store ---
-ID: fact_..., Content: 'The user's name is Alice.'
-ID: fact_..., Content: 'The user is a Director at Innovate Inc.'
-...
+ID: 1
+  Content: 'User's name is Alice'
+  Metadata: {'fact_id': '1', 'extracted_from': 'conversation:0', 'confidence': 1.0, 'timestamp': '2025-09-09T15:01:33.431207'}
+ID: 2
+  Content: 'User is a Director at Innovate Inc.'
+  Metadata: {'confidence': 1.0, 'fact_id': '2', 'timestamp': '2025-09-09T15:01:57.457935', 'extracted_from': 'conversation:2', 'previous_value': 'User is a project manager at Innovate Inc.'}
+
 --- System Shutdown ---
+
 ```
 
 ### Running the Benchmark Suite
@@ -130,22 +146,22 @@ python -m benchmark.evaluate
 
 **Expected Output:**
 ```
-Loaded 5 conversations for evaluation.
+Loaded 2 conversations for evaluation.
 
 --- Evaluating Advanced Agent System ---
 Agent System: 100%|██████████| 5/5 [00:15<00:00,  3.01s/it]
 
---- Evaluating Baseline System ---
-Baseline System: 100%|██████████| 5/5 [00:01<00:00,  3.35it/s]
-
-
 --- Benchmark Results Summary ---
-                               success_rate_%
-system   metric
-Agent    Overall Success Rate          85.71
-Baseline Overall Success Rate          33.33
+Scores are averaged across all conversations.
+| metric                    |    Agent |   Baseline |
+|:--------------------------|---------:|-----------:|
+| Extraction Precision      |    0.625 |      0.303 |
+| Extraction Recall         |    0.833 |      0.833 |
+| Extraction F1-Score       |    0.694 |      0.445 |
+| Update Accuracy           |    0     |      0     |
+| Retrieval Precision@3     |    0     |      0     |
+| Avg Latency per Turn (ms) | 5712.97  |    128.495 |
 ---------------------------------
-This table shows the percentage of tasks each system completed successfully.
 ```
 
 ## AI Usage Notes
